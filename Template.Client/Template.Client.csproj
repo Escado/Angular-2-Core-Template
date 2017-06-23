@@ -36,11 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\app\system.config.js" />
-    <Content Include="wwwroot\app\tsconfig.json" />
     <Content Include="wwwroot\Index.html" />
     <Content Include="wwwroot\system.config.js" />
     <Content Include="wwwroot\tsconfig.json" />
+    <Content Include="wwwroot\w.ts" />
+    <Content Include="wwwroot\workaround.ts" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
