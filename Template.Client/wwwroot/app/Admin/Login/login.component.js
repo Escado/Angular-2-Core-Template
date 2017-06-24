@@ -10,16 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AdminLoginComponent = (function () {
-    function AdminLoginComponent() {
+var LoginComponent = (function () {
+    function LoginComponent() {
     }
-    return AdminLoginComponent;
+    return LoginComponent;
 }());
-AdminLoginComponent = __decorate([
+LoginComponent = __decorate([
     core_1.Component({
         template: "<h4>Admin module login component</h4>"
     }),
     __metadata("design:paramtypes", [])
-], AdminLoginComponent);
-exports.AdminLoginComponent = AdminLoginComponent;
+], LoginComponent);
+exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

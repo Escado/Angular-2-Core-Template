@@ -23,7 +23,7 @@ AdminModule = __decorate([
         ],
         declarations: [
             admin_component_1.AdminComponent,
-            login_component_1.AdminLoginComponent
+            login_component_1.LoginComponent
         ],
         providers: []
     })

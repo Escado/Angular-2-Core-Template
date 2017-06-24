@@ -23,7 +23,7 @@ ClientModule = __decorate([
         ],
         declarations: [
             client_component_1.ClientComponent,
-            login_component_1.ClientLoginComponent
+            login_component_1.LoginComponent
         ],
         providers: [],
         bootstrap: []

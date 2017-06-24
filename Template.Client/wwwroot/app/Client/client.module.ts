@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router'
 import { appRoutes } from './client.routes'
 
 import { ClientComponent } from './client.component'
-import { ClientLoginComponent } from './Login/login.component'
+import { LoginComponent } from './Login/login.component'
 
 @NgModule({
     imports: [
@@ -12,7 +12,7 @@ import { ClientLoginComponent } from './Login/login.component'
     ],
     declarations: [
         ClientComponent,
-        ClientLoginComponent
+        LoginComponent
     ],
     providers: [
     ],

@@ -3,7 +3,7 @@
 @Component({
     template: `<h4>Admin module login component</h4>`
 })
-export class AdminLoginComponent {
+export class LoginComponent {
     constructor() {
 
     }

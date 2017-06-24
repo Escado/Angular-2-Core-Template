@@ -2,7 +2,7 @@
 import { RouterModule } from '@angular/router'
 
 import { AdminComponent } from './admin.component'
-import { AdminLoginComponent } from './Login/login.component'
+import { LoginComponent } from './Login/login.component'
 import { adminRoutes } from './admin.routes'
 
 @NgModule({
@@ -11,7 +11,7 @@ import { adminRoutes } from './admin.routes'
     ],
     declarations: [
         AdminComponent,
-        AdminLoginComponent
+        LoginComponent
     ],
     providers: [
     ]
