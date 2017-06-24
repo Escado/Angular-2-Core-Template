@@ -7,41 +7,6 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="wwwroot\Admin\**" />
-    <Compile Remove="wwwroot\Application\**" />
-    <Compile Remove="wwwroot\a\**" />
-    <Compile Remove="wwwroot\Client\**" />
-    <Compile Remove="wwwroot\Public\**" />
-    <Compile Remove="wwwroot\Shared\**" />
-    <Content Remove="wwwroot\Admin\**" />
-    <Content Remove="wwwroot\Application\**" />
-    <Content Remove="wwwroot\a\**" />
-    <Content Remove="wwwroot\Client\**" />
-    <Content Remove="wwwroot\Public\**" />
-    <Content Remove="wwwroot\Shared\**" />
-    <EmbeddedResource Remove="wwwroot\Admin\**" />
-    <EmbeddedResource Remove="wwwroot\Application\**" />
-    <EmbeddedResource Remove="wwwroot\a\**" />
-    <EmbeddedResource Remove="wwwroot\Client\**" />
-    <EmbeddedResource Remove="wwwroot\Public\**" />
-    <EmbeddedResource Remove="wwwroot\Shared\**" />
-    <None Remove="wwwroot\Admin\**" />
-    <None Remove="wwwroot\Application\**" />
-    <None Remove="wwwroot\a\**" />
-    <None Remove="wwwroot\Client\**" />
-    <None Remove="wwwroot\Public\**" />
-    <None Remove="wwwroot\Shared\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="wwwroot\Index.html" />
-    <Content Include="wwwroot\system.config.js" />
-    <Content Include="wwwroot\tsconfig.json" />
-    <Content Include="wwwroot\w.ts" />
-    <Content Include="wwwroot\workaround.ts" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -53,8 +18,4 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="wwwroot\system.config.js" />
-  </ItemGroup>
-
 </Project>
