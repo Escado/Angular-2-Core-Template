@@ -9,7 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var platform_browser_1 = require("@angular/platform-browser");
-var _404_component_1 = require("./Public/Errors/404.component");
+var forms_1 = require("@angular/forms");
+var _404_component_1 = require("./Shared/Errors/404.component");
+var navbar_component_1 = require("./Public/NavBar/navbar.component");
 var application_component_1 = require("./application.component");
 var routes_1 = require("./routes");
 var AppModule = (function () {
@@ -21,11 +23,14 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            router_1.RouterModule.forRoot(routes_1.appRoutes, { useHash: true })
+            router_1.RouterModule.forRoot(routes_1.appRoutes, { useHash: true }),
+            forms_1.FormsModule,
+            forms_1.ReactiveFormsModule
         ],
         declarations: [
             application_component_1.ApplicationComponent,
             _404_component_1.Error404Component,
+            navbar_component_1.NavBarComponent
         ],
         bootstrap: [
             application_component_1.ApplicationComponent

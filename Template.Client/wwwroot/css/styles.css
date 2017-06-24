@@ -1,3 +1,7 @@
 body {
-	background-color:cadetblue;
+    background-color: #526a6b !important;
+}
+
+.login-panel {
+    margin-top: 50px;
 }

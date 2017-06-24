@@ -14,7 +14,7 @@ var AdminComponent = (function () {
 }());
 AdminComponent = __decorate([
     core_1.Component({
-        template: '<h4>Admin module</h4>'
+        template: "<router-outlet></router-outlet>"
     })
 ], AdminComponent);
 exports.AdminComponent = AdminComponent;

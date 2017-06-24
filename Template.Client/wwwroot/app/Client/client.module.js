@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 var client_routes_1 = require("./client.routes");
 var client_component_1 = require("./client.component");
-var login_component_1 = require("./Login/login.component");
+var login_component_1 = require("./public/login/login.component");
 var ClientModule = (function () {
     function ClientModule() {
     }
@@ -19,7 +20,9 @@ var ClientModule = (function () {
 ClientModule = __decorate([
     core_1.NgModule({
         imports: [
-            router_1.RouterModule.forChild(client_routes_1.appRoutes)
+            router_1.RouterModule.forChild(client_routes_1.clientRoutes),
+            forms_1.FormsModule,
+            forms_1.ReactiveFormsModule
         ],
         declarations: [
             client_component_1.ClientComponent,

@@ -14,7 +14,10 @@
         "sourceMap": true,
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
-        "removeComments": true
+        "removeComments": true,
+        "typeRoots": [
+        "./node_modules/@types/"
+        ]
     },
     "exclude": [
         "node_modules/**/*.ts"

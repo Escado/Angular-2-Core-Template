@@ -10,18 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var ApplicationComponent = (function () {
-    function ApplicationComponent() {
-        this.name = 'Angular';
+    function ApplicationComponent(route) {
+        this.route = route;
+        this.link = !route;
     }
     return ApplicationComponent;
 }());
 ApplicationComponent = __decorate([
     core_1.Component({
         selector: 'app',
-        template: "<div>a</div>\n<a [routerLink]=\"['/client/login']\"> login</a>\n<a [routerLink]=\"['/client']\"> default</a>\n<a [routerLink]=\"['/404']\"> 404</a>\n<router-outlet></router-outlet>",
+        template: "<router-outlet></router-outlet>",
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute])
 ], ApplicationComponent);
 exports.ApplicationComponent = ApplicationComponent;
 //# sourceMappingURL=application.component.js.map

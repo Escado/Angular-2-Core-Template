@@ -14,7 +14,7 @@ var ClientComponent = (function () {
 }());
 ClientComponent = __decorate([
     core_1.Component({
-        template: '<h4>Client module</h4>'
+        template: '<router-outlet></router-outlet>'
     })
 ], ClientComponent);
 exports.ClientComponent = ClientComponent;
