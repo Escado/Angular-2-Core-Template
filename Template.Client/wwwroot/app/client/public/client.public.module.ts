@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { clientPublicRoutes } from './client.public.routes'
 
-import { ClientPublicComponent } from './client.public.component'
 import { LoginComponent } from './login/login.component'
 
 @NgModule({
@@ -14,7 +13,6 @@ import { LoginComponent } from './login/login.component'
         ReactiveFormsModule
     ],
     declarations: [
-        ClientPublicComponent,
         LoginComponent
     ],
     providers: [

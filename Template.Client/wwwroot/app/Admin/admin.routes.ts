@@ -1,10 +1,10 @@
 ﻿import { Routes } from '@angular/router'
-import { LoginComponent } from './public/login/login.component'
-import { AdminComponent } from './admin.component'
-
+import { AdminInternalComponent } from './internal/admin.internal.component'
+import { AdminpublicComponent } from './public/admin.public.component'
 
 export const adminRoutes: Routes = [
-    { path: '', component: AdminComponent },
-    { path: 'login', component: LoginComponent },
+    { path: 'internal', component: AdminInternalComponent, loadChildren: 'app/admin/internal/admin.internal.module#AdminInternalModule' },
+    { path: '', component: AdminpublicComponent ,loadChildren: 'app/admin/public/admin.public.module#AdminPublicModule' }
+    
 
 ]

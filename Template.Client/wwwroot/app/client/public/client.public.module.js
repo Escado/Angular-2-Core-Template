@@ -10,7 +10,6 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 var client_public_routes_1 = require("./client.public.routes");
-var client_public_component_1 = require("./client.public.component");
 var login_component_1 = require("./login/login.component");
 var ClientPublicModule = (function () {
     function ClientPublicModule() {
@@ -25,7 +24,6 @@ ClientPublicModule = __decorate([
             forms_1.ReactiveFormsModule
         ],
         declarations: [
-            client_public_component_1.ClientPublicComponent,
             login_component_1.LoginComponent
         ],
         providers: [],

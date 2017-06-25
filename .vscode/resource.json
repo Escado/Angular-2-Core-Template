@@ -1,7 +1,8 @@
 {
   "css": {
     "style": [
-      "node_modules/bootstrap/dist/bootstrap.css"
+      "node_modules/bootstrap/dist/bootstrap.css",
+      "wwwroot/css/bootstrap.css"
     ]
   }
 }

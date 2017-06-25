@@ -10,16 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var LoginComponent = (function () {
-    function LoginComponent() {
+    function LoginComponent(router) {
+        this.router = router;
     }
+    LoginComponent.prototype.login = function (formValues) {
+        this.router.navigate(['/admin/internal/']);
+    };
     return LoginComponent;
 }());
 LoginComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/admin/public/login/login.component.html'
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.Router])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

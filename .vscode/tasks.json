@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/Angular-2-Core-Template/Template.Client/Template.Client.csproj"
+                "${workspaceRoot}\\Template.Client\\Template.Client.csproj"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
@@ -15,6 +15,7 @@
         {
             "taskName": "tsc",
             "args": [
+                "${workspaceRoot}\\Template.Client\\",
                 "-w"
             ],
             "command": "tsc",

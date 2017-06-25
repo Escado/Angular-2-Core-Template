@@ -31,6 +31,7 @@ namespace Template.Client
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +43,12 @@ namespace Template.Client
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
                     RequestPath = new PathString("/node_modules")
+            });
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -1,22 +1,22 @@
 ﻿import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AdminComponent } from './admin.component'
-import { LoginComponent } from './public/login/login.component'
 import { adminRoutes } from './admin.routes'
+
+import { AdminInternalComponent } from './internal/admin.internal.component'
+import { NavBarComponent } from './internal/navbar/navbar.component'
+
+import { AdminpublicComponent } from './public/admin.public.component'
+
 
 @NgModule({
     imports: [
-        RouterModule.forChild(adminRoutes),
-        FormsModule,
-        ReactiveFormsModule
+        RouterModule.forChild(adminRoutes)
     ],
     declarations: [
-        AdminComponent,
-        LoginComponent
-    ],
-    providers: [
+        AdminpublicComponent,
+        AdminInternalComponent,
+        NavBarComponent
     ]
 })
 

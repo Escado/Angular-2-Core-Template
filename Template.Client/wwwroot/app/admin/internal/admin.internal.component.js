@@ -14,7 +14,7 @@ var AdminInternalComponent = (function () {
 }());
 AdminInternalComponent = __decorate([
     core_1.Component({
-        template: '<router-outlet></router-outlet>'
+        templateUrl: 'app/admin/internal/admin.internal.component.html'
     })
 ], AdminInternalComponent);
 exports.AdminInternalComponent = AdminInternalComponent;

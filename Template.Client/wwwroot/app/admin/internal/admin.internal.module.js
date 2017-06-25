@@ -7,6 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var admin_internal_routes_1 = require("./admin.internal.routes");
+var products_component_1 = require("./products/products.component");
 var AdminInternalModule = (function () {
     function AdminInternalModule() {
     }
@@ -14,8 +17,12 @@ var AdminInternalModule = (function () {
 }());
 AdminInternalModule = __decorate([
     core_1.NgModule({
-        imports: [],
-        declarations: [],
+        imports: [
+            router_1.RouterModule.forChild(admin_internal_routes_1.adminInternalRoutes)
+        ],
+        declarations: [
+            products_component_1.ProductComponent
+        ],
         providers: []
     })
 ], AdminInternalModule);

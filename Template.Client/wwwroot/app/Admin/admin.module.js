@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var forms_1 = require("@angular/forms");
-var admin_component_1 = require("./admin.component");
-var login_component_1 = require("./public/login/login.component");
 var admin_routes_1 = require("./admin.routes");
+var admin_internal_component_1 = require("./internal/admin.internal.component");
+var navbar_component_1 = require("./internal/navbar/navbar.component");
+var admin_public_component_1 = require("./public/admin.public.component");
 var AdminModule = (function () {
     function AdminModule() {
     }
@@ -20,15 +20,13 @@ var AdminModule = (function () {
 AdminModule = __decorate([
     core_1.NgModule({
         imports: [
-            router_1.RouterModule.forChild(admin_routes_1.adminRoutes),
-            forms_1.FormsModule,
-            forms_1.ReactiveFormsModule
+            router_1.RouterModule.forChild(admin_routes_1.adminRoutes)
         ],
         declarations: [
-            admin_component_1.AdminComponent,
-            login_component_1.LoginComponent
-        ],
-        providers: []
+            admin_public_component_1.AdminpublicComponent,
+            admin_internal_component_1.AdminInternalComponent,
+            navbar_component_1.NavBarComponent
+        ]
     })
 ], AdminModule);
 exports.AdminModule = AdminModule;

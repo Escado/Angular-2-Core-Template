@@ -22,7 +22,8 @@ import { appRoutes } from './routes'
         NavBarComponent
     ],
     bootstrap: [
-        ApplicationComponent]
+        ApplicationComponent
+        ]
 })
 export class AppModule { }
 

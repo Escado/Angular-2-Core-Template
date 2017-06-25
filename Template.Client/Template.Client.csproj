@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+    <DotNetCliToolReference Include="Microsoft.AspNetCore.Server.IISIntegration.Tools" Version="1.0.0-preview2-final" />
   </ItemGroup>
 </Project>

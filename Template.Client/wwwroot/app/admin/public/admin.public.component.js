@@ -7,15 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AdminInternalComponent = (function () {
-    function AdminInternalComponent() {
+var AdminpublicComponent = (function () {
+    function AdminpublicComponent() {
     }
-    return AdminInternalComponent;
+    return AdminpublicComponent;
 }());
-AdminInternalComponent = __decorate([
+AdminpublicComponent = __decorate([
     core_1.Component({
-        template: '<router-outlet></router-outlet>'
+        template: "<router-outlet></router-outlet>"
     })
-], AdminInternalComponent);
-exports.AdminInternalComponent = AdminInternalComponent;
+], AdminpublicComponent);
+exports.AdminpublicComponent = AdminpublicComponent;
 //# sourceMappingURL=admin.public.component.js.map
