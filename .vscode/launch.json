@@ -18,9 +18,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceRoot}/Angular-2-Core-Template/Template.Client/bin/Debug/netcoreapp1.1/Template.Client.dll",
+            "program": "${workspaceRoot}/Angular-2-Core-Template/src/Template.Client/bin/Debug/netcoreapp1.1/Template.Client.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/Angular-2-Core-Template/Template.Client",
+            "cwd": "${workspaceRoot}/Angular-2-Core-Template/src/Template.Client",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
