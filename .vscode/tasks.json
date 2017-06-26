@@ -2,14 +2,33 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "0.1.0",
-    "command": "dotnet",
+    "command": "cmd",
     "isShellCommand": true,
-    "args": [],
-    "tasks": [{
-        "taskName": "build",
-        "args": [],
-        "isBuildCommand": true,
-        "showOutput": "silent",
-        "problemMatcher": "$msCompile"
-    }]
+    "args": [
+        ""
+    ],
+    "tasks": [
+        {
+            "taskName": "Build",
+            "suppressTaskName": true,
+            "command": "dotnet",
+            "args": [
+                "build"
+            ],
+            "isBuildCommand": true,
+            "showOutput": "silent",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "TypeScript watch",
+            "suppressTaskName": true,
+            "command": "tsc",
+            "args": [
+                "-w",
+                "-p",
+                ".\\src\\Template.Client"
+            ],
+            "showOutput": "always"
+        }
+    ]
 }
