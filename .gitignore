@@ -21,10 +21,8 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
-[Aa]pp/*.js/
-[Aa]pp/*.map/
-[Aa]pp/**/*.js/
-[Aa]pp/**/*.map/
+*.component.js/
+*.componen.js.map/
 
 # Visual Studio 2015+
 .vs/
