@@ -7,6 +7,9 @@
 #Exceptions
 !WDeploy.exe
 
+#Content-sensitive files
+appsettings.*
+
 # User-specific files
 *.suo
 *.user
