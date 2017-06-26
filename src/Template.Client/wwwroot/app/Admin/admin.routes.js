@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var admin_internal_component_1 = require("./internal/admin.internal.component");
 var admin_public_component_1 = require("./public/admin.public.component");
 exports.adminRoutes = [

@@ -9,20 +9,55 @@
            "request": "launch",
            "name": "Launch Chrome",
            "url": "http://localhost:8080",
-           "webRoot": "${workspaceRoot}/wwwroot",
-           "userDataDir": "${workspaceRoot}/wwwroot"
+           "webRoot": "${workspaceRoot}\\wwwroot",
+           "userDataDir": "${workspaceRoot}\\wwwroot"
        },
         {
-            "name": ".NET Core Launch (web)",
+            "name": "Client -- Debug",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceRoot}/Angular-2-Core-Template/src/Template.Client/bin/Debug/netcoreapp1.1/Template.Client.dll",
+            "program": "${workspaceRoot}\\src\\Template.Client\\bin\\Debug\\netcoreapp1.1\\Template.Client.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/Angular-2-Core-Template/src/Template.Client",
+            "cwd": "${workspaceRoot}\\src\\Template.Client",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
+            "requireExactSource": false,
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": ""
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceRoot}\\Views"
+            }
+        },
+
+        {
+            "name": "Client -- Development",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceRoot}\\src\\Template.Client\\bin\\Debug\\netcoreapp1.1\\Template.Client.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}\\src\\Template.Client",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "requireExactSource": false,
             "launchBrowser": {
                 "enabled": true,
                 "args": "${auto-detect-url}",
@@ -41,7 +76,140 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
             "sourceFileMap": {
-                "/Views": "${workspaceRoot}/Views"
+                "/Views": "${workspaceRoot}\\Views"
+            }
+        },
+        {
+            "name": "Client -- Production",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceRoot}\\src\\Template.Client\\bin\\Debug\\netcoreapp1.1\\Template.Client.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}\\src\\Template.Client",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "requireExactSource": false,
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceRoot}\\Views"
+            }
+        },
+                {
+            "name": "API -- Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceRoot}\\src\\Template.API\\bin\\Debug\\netcoreapp1.1\\Template.API.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}\\src\\Template.API",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "requireExactSource": false,
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": ""
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceRoot}\\Views"
+            }
+        },
+
+        {
+            "name": "API -- Development",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceRoot}\\src\\Template.API\\bin\\Debug\\netcoreapp1.1\\Template.API.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}\\src\\Template.API",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "requireExactSource": false,
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceRoot}\\Views"
+            }
+        },
+        {
+            "name": "API -- Production",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceRoot}\\src\\Template.API\\bin\\Debug\\netcoreapp1.1\\Template.API.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}\\src\\Template.API",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "requireExactSource": false,
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceRoot}\\Views"
             }
         },
         {
