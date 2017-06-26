@@ -1,8 +1,8 @@
 using System.Linq;
 using System.Reflection;
 using Dapper;
-using Template.Entities.Base;
 using Template.Repositories.Mappers;
+using Template.Entities.DbModels.Base;
 
 namespace Template.Repositories.Helpers
 {

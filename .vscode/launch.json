@@ -16,7 +16,7 @@
             "name": "Client -- Debug",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceRoot}\\src\\Template.Client\\bin\\Debug\\netcoreapp1.1\\Template.Client.dll",
             "args": [],
@@ -50,7 +50,7 @@
             "name": "Client -- Development",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceRoot}\\src\\Template.Client\\bin\\Debug\\netcoreapp1.1\\Template.Client.dll",
             "args": [],
@@ -83,7 +83,7 @@
             "name": "Client -- Production",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceRoot}\\src\\Template.Client\\bin\\Debug\\netcoreapp1.1\\Template.Client.dll",
             "args": [],
@@ -116,7 +116,7 @@
             "name": "API -- Debug",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceRoot}\\src\\Template.API\\bin\\Debug\\netcoreapp1.1\\Template.API.dll",
             "args": [],
@@ -150,7 +150,7 @@
             "name": "API -- Development",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceRoot}\\src\\Template.API\\bin\\Debug\\netcoreapp1.1\\Template.API.dll",
             "args": [],
@@ -183,7 +183,7 @@
             "name": "API -- Production",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceRoot}\\src\\Template.API\\bin\\Debug\\netcoreapp1.1\\Template.API.dll",
             "args": [],

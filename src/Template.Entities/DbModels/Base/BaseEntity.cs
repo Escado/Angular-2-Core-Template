@@ -1,4 +1,4 @@
-namespace Template.Entities.Base
+namespace Template.Entities.DbModels.Base
 {
     public class BaseEntity
     {

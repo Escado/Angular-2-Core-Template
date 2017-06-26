@@ -17,5 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Template.Repositories\Template.Repositories.csproj" />
     <ProjectReference Include="..\Template.Services\Template.Services.csproj" />
+    <ProjectReference Include="..\Template.Entities\Template.Entities.csproj" />
+    <ProjectReference Include="..\Template.Common\Template.Common.csproj" />
   </ItemGroup>
 </Project>

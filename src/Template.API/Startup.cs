@@ -8,7 +8,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Npgsql;
+using Template.Common;
+using Template.Entities.Helpers;
+using Template.Repositories.Helpers;
 using Template.Repositories.Repositories;
+using Template.Repositories.Base;
 
 namespace Template.API
 {
@@ -22,6 +26,12 @@ namespace Template.API
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var migrationNamespace = Configuration["ConfigSettings:MigrationNamespace"];
+            BaseRepository.ConnectionString = connectionString;
+            MigrationHelper.CreateDbIfNoneExists(connectionString);
+            MigrationHelper.MigrateUp(connectionString, migrationNamespace);
+            MapperHelper.MapAllEntities();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -29,13 +39,15 @@ namespace Template.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configurations
             services.AddScoped<NpgsqlConnection>(provider => new NpgsqlConnection(Configuration.GetConnectionString("DefaultConnection")));
+            services.Configure<ConfigSettings>(Configuration.GetSection("ConfigSettings"));
 
             // Repositories
             services.AddScoped<IRepository, Repository>();
 
             //Services
-            
+
 
 
             // Add framework services.
@@ -45,27 +57,8 @@ namespace Template.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-
             app.UseStaticFiles();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
         }
     }
 }

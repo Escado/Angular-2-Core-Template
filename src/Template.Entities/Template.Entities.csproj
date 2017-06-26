@@ -1,9 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
-
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Develop|AnyCPU'" />
-
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="3.2.4.1" />
+    <PackageReference Include="FluentMigrator" Version="1.6.2" />
+    <PackageReference Include="FluentMigrator.Runner" Version="1.6.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WebParams\Base\" />
+  </ItemGroup>
 </Project>

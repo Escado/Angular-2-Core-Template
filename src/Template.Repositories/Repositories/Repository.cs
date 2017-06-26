@@ -6,6 +6,7 @@ namespace Template.Repositories.Repositories
 
     public class Repository : IRepository
     {
+        public static readonly string _connectionString = "";
         public Repository()
         {
             
