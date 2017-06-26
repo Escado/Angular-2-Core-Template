@@ -44,7 +44,7 @@ namespace Template.API
             services.Configure<ConfigSettings>(Configuration.GetSection("ConfigSettings"));
 
             // Repositories
-            services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             //Services
 

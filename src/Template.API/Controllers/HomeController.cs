@@ -3,33 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Template.Entities.DbModels;
+using Template.Repositories.Repositories;
 
 namespace Template.API.Controllers
 {
-    public class HomeController : Controller
+    [Route("api/[controller]")]
+    public class UserController : Controller
     {
-        public IActionResult Index()
+        private readonly IUserRepository _userRepository;
+        public UserController(IUserRepository userRepository)
         {
-            return View();
+            _userRepository = userRepository;
         }
 
-        public IActionResult About()
+        [HttpGet("add/{name}/{surname}")]
+        public string AddUser(string name, string surname)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            _userRepository.Add(new User() { Name = name, Surname = surname });
+            return $"Added user to list: {name} {surname}";
         }
 
-        public IActionResult Contact()
+        [HttpGet("get/{id}")]
+        public IActionResult GetUser(int id)
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            return Ok(_userRepository.Get(id) ?? new User() { Name = "Not", Surname = "Found" });
         }
     }
 }

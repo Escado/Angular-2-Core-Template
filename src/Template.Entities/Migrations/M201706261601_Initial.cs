@@ -1,5 +1,6 @@
 using System;
 using FluentMigrator;
+using Template.Entities.Helpers;
 
 namespace Template.Entities.Migrations
 {
@@ -8,12 +9,14 @@ namespace Template.Entities.Migrations
     {
         public override void Down()
         {
-            Delete.Table("User");
+            Delete.Table("user");
         }
 
         public override void Up()
         {
-            Create.Table("User").WithColumn("Id").AsInt32().PrimaryKey();
+            Create.Table("user").WithIdColumn()
+                .WithColumn("name").AsString()
+                .WithColumn("surname").AsString();
         }
     }
 }

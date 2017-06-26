@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Template.Common.Helpers;
 
 namespace Template.Repositories.Mappers
 {
@@ -28,7 +29,7 @@ namespace Template.Repositories.Mappers
         }
 
 
-        public override string GetColumnName(string prefix, string columnName, string alias) => base.GetColumnName(null, columnName, alias);
-        public override string GetTableName(string schemaName, string tableName, string alias) => base.GetTableName(schemaName, tableName, alias);
+        public override string GetColumnName(string prefix, string columnName, string alias) => StringHelper.ToUnderscoreCase(base.GetColumnName(null, columnName, alias));
+        public override string GetTableName(string schemaName, string tableName, string alias) => StringHelper.ToUnderscoreCase(base.GetTableName(schemaName, tableName, alias));
     }
 }
