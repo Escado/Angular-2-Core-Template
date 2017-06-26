@@ -1,0 +1,8 @@
+### Requires Visual Studio Code plugin REST Client
+### ext install rest-client
+
+### Gets user by id. /get/{id}
+GET http://localhost:55462/api/user/get/1 HTTP/1.1
+
+### Adds user to database /add/{name}/{surname}
+GET http://localhost:55462/api/user/add/Master/Blaster HTTP/1.1
