@@ -1,16 +1,21 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net462</TargetFramework>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Develop|AnyCPU'" />
-
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Develop|AnyCPU'"/>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0-preview-20161123-03" />
-    <PackageReference Include="xunit" Version="2.2.0-beta4-build3444" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0-beta4-build1194" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0-preview-20161123-03"/>
+    <PackageReference Include="xunit" Version="2.2.0-beta4-build3444"/>
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0-beta4-build1194"/>
+    <PackageReference Include="Moq" Version="4.7.63"/>
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Template.API\Template.API.csproj"/>
+    <ProjectReference Include="..\..\src\Template.Common\Template.Common.csproj"/>
+    <ProjectReference Include="..\..\src\Template.Entities\Template.Entities.csproj"/>
+    <ProjectReference Include="..\..\src\Template.Repositories\Template.Repositories.csproj"/>
+    <ProjectReference Include="..\..\src\Template.Services\Template.Services.csproj"/>
+  </ItemGroup>
 </Project>

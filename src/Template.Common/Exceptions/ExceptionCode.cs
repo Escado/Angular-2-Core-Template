@@ -15,6 +15,18 @@ namespace Template.Common.Exceptions
 
             [Description("Invalid request")]
             InvalidRequest = 10001,
+
+            [Description("Failed to validate data")]
+            DataValidationFailed = 10002,
+        }
+
+        public enum User
+        {
+            [Description("User with the same name and surname already exists")]
+            DuplicateUser = 20001,
+
+            [Description("Cannot create user with empty name or surname")]
+            EmptyNameOrSurname = 20002
         }
     }
 }

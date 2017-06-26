@@ -13,6 +13,8 @@ using Template.Entities.Helpers;
 using Template.Repositories.Helpers;
 using Template.Repositories.Repositories;
 using Template.Repositories.Base;
+using Template.Services.Services;
+using Template.API.Middlewares;
 
 namespace Template.API
 {
@@ -47,7 +49,7 @@ namespace Template.API
             services.AddScoped<IUserRepository, UserRepository>();
 
             //Services
-
+            services.AddScoped<IUserService, UserService>();
 
 
             // Add framework services.
@@ -57,7 +59,7 @@ namespace Template.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseStaticFiles();
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseMvc();
         }
     }

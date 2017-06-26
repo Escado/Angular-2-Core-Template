@@ -1,5 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
+  <ItemGroup>
+    <ProjectReference Include="..\Template.Repositories\Template.Repositories.csproj" />
+    <ProjectReference Include="..\Template.Common\Template.Common.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
   </PropertyGroup>
