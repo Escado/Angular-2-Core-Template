@@ -1,6 +1,6 @@
 # Description
 
-Frontend: Angular 2(4).
+Frontend: Angular 2(4).  
 Backend: ASP.NET REST Controllers.  
 Database: PostgreSQL  
 
