@@ -19,8 +19,7 @@ namespace Template.Client
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)          
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -39,10 +38,11 @@ namespace Template.Client
         {
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions(){
+            app.UseStaticFiles(new StaticFileOptions()
+            {
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
-                    RequestPath = new PathString("/node_modules")
+                RequestPath = new PathString("/node_modules")
             });
             app.UseMvc(routes =>
             {

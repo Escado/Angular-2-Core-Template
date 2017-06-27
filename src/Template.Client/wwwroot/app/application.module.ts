@@ -2,6 +2,7 @@
 import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http'
 
 import { Error404Component } from './Shared/Errors/404.component'
 import { NavBarComponent } from './Public/NavBar/navbar.component'
@@ -14,7 +15,8 @@ import { appRoutes } from './routes'
         BrowserModule,
         RouterModule.forRoot(appRoutes, { useHash: true }),
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpModule
     ],
     declarations: [
         ApplicationComponent,

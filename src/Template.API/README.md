@@ -4,9 +4,9 @@ Create appsettings files with your credentials and other information.
 
 ### File names: 
 
-appsettings.publish.json  
-appsettings.release.json  
-appsettings.json
+appsettings.Debug.json  
+appsettings.Development.json  
+appsettings.Release.json  
 
 #### Content format: 
 

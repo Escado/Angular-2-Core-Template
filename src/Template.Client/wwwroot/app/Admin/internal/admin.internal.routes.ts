@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router'
 
 import { AdminInternalComponent } from './admin.internal.component'
-import { ProductComponent } from './products/products.component'
+import { UserComponent } from './users/users.component'
 
 export const adminInternalRoutes: Routes = [
-    { path: '', component: ProductComponent},
+    { path: '', component: UserComponent},
     
     
 ]
