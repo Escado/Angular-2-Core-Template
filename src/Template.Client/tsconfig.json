@@ -2,27 +2,19 @@
     "compileOnSave": true,
     "compilerOptions": {
         "target": "es5",
-        "rootDir": "wwwroot",
-        "outDir": "wwwroot",
         "noImplicitAny": false,
         "suppressImplicitAnyIndexErrors": true,
         "experimentalDecorators": true,
         "lib": [
             "dom", "es2015"
         ],
-        "module": "commonjs",
         "sourceMap": true,
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "removeComments": true,
         "typeRoots": [
         "./node_modules/@types/"
-        ]
-    },
-    "exclude": [
-        "node_modules/**/*.ts"
-    ],
-    "include": [
-        "wwwroot/app/**/*.ts"
-    ]
+        ],
+        "atom": { "rewriteTsconfig": false }
+    }
 }
