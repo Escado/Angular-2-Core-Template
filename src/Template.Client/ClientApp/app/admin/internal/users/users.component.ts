@@ -9,7 +9,7 @@ import { IUser } from './users.model'
 })
 export class UserComponent implements OnInit {
 
-    private users: IUser[] = [];
+    users: IUser[] = [];
 
     constructor(
         private _userService: UserService,

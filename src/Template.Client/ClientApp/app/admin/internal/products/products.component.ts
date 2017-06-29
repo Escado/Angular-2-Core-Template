@@ -7,7 +7,7 @@ import { ProductService} from './products.service'
     templateUrl: 'products.component.html'
 })
 export class ProductComponent implements OnInit {
-    private products: IProduct[];
+    products: IProduct[];
 
     constructor(private route: ActivatedRoute, private _productService:ProductService) {
 

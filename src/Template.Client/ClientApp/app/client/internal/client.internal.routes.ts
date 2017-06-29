@@ -5,7 +5,6 @@ import { ProductComponent } from '../../admin/internal/products/products.compone
 import { ProductsResolver } from '../../admin/internal/products/products-resolver'
 
 export const clientInternalRoutes: Routes = [
-    { path: 'users', component: UserComponent, resolve: { users: UsersResolver } },
-    { path: 'products', component: ProductComponent, resolve: { products: ProductsResolver } },
-    // { path: '**', redirectTo: 'users' },
+    { path: 'users2', component: UserComponent, resolve: { users: UsersResolver } },
+    { path: 'products2', component: ProductComponent, resolve: { products: ProductsResolver } },
 ]

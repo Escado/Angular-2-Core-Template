@@ -11,6 +11,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const clearRequire = require('webpack-clear-require');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env) => {
     clearRequire(); // all 
@@ -21,31 +22,40 @@ module.exports = (env) => {
         context: __dirname,
         resolve: { extensions: ['.js', '.ts'] },
         output: {
-            filename: '[name].js',
-            publicPath: '/dist/' // Webpack dev middleware, if enabled, handles requests for this URL prefix
+            filename: '[name].[hash].bundle.js',
+            chunkFilename: 'dist/[id].[hash].chunk.js',
+            publicPath: '/' // Webpack dev middleware, if enabled, handles requests for this URL prefix
         },
         module: {
             rules: [
-                { test: /\.ts$/, include: /ClientApp/, use: ['awesome-typescript-loader?silent=true', 'angular2-template-loader'] },
+                { test: /\.ts$/, include: /ClientApp/, use: ['awesome-typescript-loader?silent=true', 'angular2-template-loader', 'angular-router-loader?aot=true&genDir=aot/'] },
                 { test: /\.html$/, use: 'html-loader?minimize=false' },
                 { test: /\.css$/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize'] },
                 { test: /\.scss$/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize', 'sass-loader'] },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
+                { test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/, use: 'file-loader?name=assets/[name]-[hash:6].[ext]' },
+                { test: /favicon.ico$/, use: 'file-loader?name=/[name].[ext]' }
             ]
         },
         plugins: [new CheckerPlugin()]
     };
 
     // Configuration for client-side bundle suitable for running in browsers
-    const clientBundleOutputDir = './wwwroot/dist';
+    const clientBundleOutputDir = './wwwroot/';
     const clientBundleConfig = merge(sharedConfig, {
-        entry: { 'main-client': './ClientApp/app/main.ts' },
+        entry: {
+            'polyfills': './ClientApp/app/polyfills.ts',
+            'vendor': './ClientApp/app/vendor.ts',
+            'app': './ClientApp/app/main.ts'
+
+
+        },
         output: { path: path.join(__dirname, clientBundleOutputDir) },
         plugins: [
-            new webpack.DllReferencePlugin({
-                context: __dirname,
-                manifest: require('./wwwroot/dist/vendor-manifest.json')
-            })
+            new HtmlWebpackPlugin({
+                filename: 'index.html',
+                inject: 'body',
+                template: './ClientApp/index.html'
+            }),
         ].concat(isDevBuild ? [
             // Plugins that apply in development builds only
             new webpack.SourceMapDevToolPlugin({

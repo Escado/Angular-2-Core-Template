@@ -5,11 +5,15 @@ import { Router } from '@angular/router'
     templateUrl: 'login.component.html'
 })
 export class AdminLoginComponent {
+
+    username: string;
+    password: string;
+
     constructor(private router: Router) {
 
     }
 
     login(formValues) {
-        this.router.navigate(['/admin/internal/'])
+        this.router.navigate(['/admin/internal/default'])
     }
 }

@@ -4,8 +4,6 @@ import { adminInternalRoutes } from './internal/admin.internal.routes'
 import { adminPublicRoutes } from './public/admin.public.routes'
 
 export const adminRoutes: Routes = [
-    { path: 'internal', component: AdminInternalComponent, children: adminInternalRoutes },
-    { path: 'public', children: adminPublicRoutes }
-    
-
+    { path: 'internal', component: AdminInternalComponent, loadChildren: './internal/admin.internal.module#AdminInternalModule' },
+    { path: 'public', loadChildren: './public/admin.public.module#AdminPublicModule' },
 ]

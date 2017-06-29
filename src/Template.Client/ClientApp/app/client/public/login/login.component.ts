@@ -5,7 +5,11 @@ import { Router } from '@angular/router'
     templateUrl: 'login.component.html'
 })
 export class ClientLoginComponent {
-    constructor(private router:Router) {
+
+    username: string;
+    password: string;
+
+    constructor(private router: Router) {
     }
 
     login(formValues) {

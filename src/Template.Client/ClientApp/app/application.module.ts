@@ -13,7 +13,7 @@ import { AdminModule } from './admin/admin.module'
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot(appRoutes, { useHash: true }),
+        RouterModule.forRoot(appRoutes, { useHash: true, enableTracing: true }),
         AdminModule,
         ClientModule
     ],

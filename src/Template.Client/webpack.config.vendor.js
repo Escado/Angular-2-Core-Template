@@ -51,7 +51,6 @@ module.exports = (env) => {
                 'bootstrap-datepicker/dist/css/bootstrap-datepicker3.css',
                 'ng2-toasty/bundles/style-bootstrap.css',
                 'font-awesome/css/font-awesome.css',
-
                 './ClientApp/css/bootstrap.css',
                 './ClientApp/css/styles.css',
                 './ClientApp/css/loading.css'

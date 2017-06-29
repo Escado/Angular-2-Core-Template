@@ -8,7 +8,4 @@ import { ProductsResolver } from './products/products-resolver'
 export const adminInternalRoutes: Routes = [
     { path: 'users', component: UserComponent, resolve: { users: UsersResolver } },
     { path: 'products', component: ProductComponent, resolve: { products: ProductsResolver } },
-    // { path: '**', redirectTo: 'users' },
-
-
 ]
