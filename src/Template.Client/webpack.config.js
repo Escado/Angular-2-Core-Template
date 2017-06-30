@@ -1,72 +1,100 @@
-// ======================================
-// Author: Ebenezer Monney
-// Email:  info@ebenmonney.com
-// Copyright (c) 2017 www.ebenmonney.com
-// 
-// ==> Gun4Hire: contact@ebenmonney.com
-// ======================================
+var path = require('path');
 
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const clearRequire = require('webpack-clear-require');
-const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+var webpack = require('webpack');
+
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+module.exports = {
 
-module.exports = (env) => {
-    clearRequire(); // all 
-    // Configuration in common to both client-side and server-side bundles
-    const isDevBuild = !(env && env.prod);
-    const sharedConfig = {
-        stats: { modules: false },
-        context: __dirname,
-        resolve: { extensions: ['.js', '.ts'] },
-        output: {
-            filename: '[name].[hash].bundle.js',
-            chunkFilename: 'dist/[id].[hash].chunk.js',
-            publicPath: '/' // Webpack dev middleware, if enabled, handles requests for this URL prefix
-        },
-        module: {
-            rules: [
-                { test: /\.ts$/, include: /ClientApp/, use: ['awesome-typescript-loader?silent=true', 'angular2-template-loader', 'angular-router-loader?aot=true&genDir=aot/'] },
-                { test: /\.html$/, use: 'html-loader?minimize=false' },
-                { test: /\.css$/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize'] },
-                { test: /\.scss$/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize', 'sass-loader'] },
-                { test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/, use: 'file-loader?name=assets/[name]-[hash:6].[ext]' },
-                { test: /favicon.ico$/, use: 'file-loader?name=/[name].[ext]' }
+    entry: {
+        'vendor': './ClientApp/vendor.ts',
+        'polyfills': './ClientApp/polyfills.ts',
+        'app': './ClientApp/main-aot.ts' // AoT compilation
+    },
+
+    output: {
+        path: __dirname + '/wwwroot/',
+        filename: 'dist/[name].[hash].bundle.js',
+        chunkFilename: 'dist/[id].[hash].chunk.js',
+        publicPath: '/'
+    },
+
+    resolve: {
+        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
+    },
+
+    devServer: {
+        historyApiFallback: true,
+        stats: 'minimal',
+        outputPath: path.join(__dirname, 'wwwroot/')
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular-router-loader?aot=true&genDir=aot/'
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
+                loader: 'file-loader?name=assets/[name]-[hash:6].[ext]'
+            },
+            {
+                test: /favicon.ico$/,
+                loader: 'file-loader?name=/[name].[ext]'
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.html$/,
+                loader: 'raw-loader'
+            }
+        ],
+        exprContextCritical: false
+    },
+
+    plugins: [
+        new CleanWebpackPlugin(
+            [
+                './wwwroot/dist',
+                './wwwroot/assets'
             ]
-        },
-        plugins: [new CheckerPlugin()]
-    };
-
-    // Configuration for client-side bundle suitable for running in browsers
-    const clientBundleOutputDir = './wwwroot/';
-    const clientBundleConfig = merge(sharedConfig, {
-        entry: {
-            'polyfills': './ClientApp/app/polyfills.ts',
-            'vendor': './ClientApp/app/vendor.ts',
-            'app': './ClientApp/app/main.ts'
-
-
-        },
-        output: { path: path.join(__dirname, clientBundleOutputDir) },
-        plugins: [
-            new HtmlWebpackPlugin({
-                filename: 'index.html',
-                inject: 'body',
-                template: './ClientApp/index.html'
+        ),
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false
+        }),
+        new webpack.optimize.CommonsChunkPlugin(
+            {
+                name: ['vendor', 'polyfills']
             }),
-        ].concat(isDevBuild ? [
-            // Plugins that apply in development builds only
-            new webpack.SourceMapDevToolPlugin({
-                filename: '[file].map', // Remove this line if you prefer inline source maps
-                moduleFilenameTemplate: path.relative(clientBundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
-            })
-        ] : [
-                // Plugins that apply in production builds only
-                new webpack.optimize.UglifyJsPlugin()
-            ])
-    });
 
-    return [clientBundleConfig];
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            inject: 'body',
+            template: 'ClientApp/index.html'
+        }),
+
+        new CopyWebpackPlugin([
+            { from: '../ClientApp/img/*.*', to: 'assets/', flatten: true }
+        ])
+    ]
 };
+

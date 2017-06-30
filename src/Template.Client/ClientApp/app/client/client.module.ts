@@ -1,7 +1,7 @@
 ﻿import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
-import { clientRoutes } from './client.routes'
+import { ClientRoutingModule } from './client-routing.module'
 
 import { ClientPublicModule } from './public/client.public.module'
 import { ClientInternalModule } from './internal/client.internal.module'
@@ -10,7 +10,7 @@ import { ClientInternalModule } from './internal/client.internal.module'
     imports: [
         ClientPublicModule,
         ClientInternalModule,
-        RouterModule.forChild(clientRoutes),
+        ClientRoutingModule
     ],
     declarations: [
 

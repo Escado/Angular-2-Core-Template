@@ -9,10 +9,10 @@
 import * as i0 from '@angular/core';
 import * as i1 from '../../../ClientApp/app/application.module';
 import * as i2 from '../../../ClientApp/app/application.component';
-import * as i3 from './admin/public/login/login.component.ngfactory';
-import * as i4 from './admin/internal/users/users.component.ngfactory';
-import * as i5 from './admin/internal/products/products.component.ngfactory';
-import * as i6 from './admin/internal/admin.internal.component.ngfactory';
+import * as i3 from './admin/internal/admin.internal.component.ngfactory';
+import * as i4 from './admin/public/login/login.component.ngfactory';
+import * as i5 from './admin/internal/users/users.component.ngfactory';
+import * as i6 from './admin/internal/products/products.component.ngfactory';
 import * as i7 from './client/public/login/login.component.ngfactory';
 import * as i8 from './application.component.ngfactory';
 import * as i9 from '@angular/common';
@@ -23,22 +23,25 @@ import * as i13 from '../../../ClientApp/app/admin/internal/users/users-resolver
 import * as i14 from '../../../ClientApp/app/admin/internal/products/products.service';
 import * as i15 from '../../../ClientApp/app/admin/internal/products/products-resolver';
 import * as i16 from '@angular/router';
-import * as i17 from '../../../ClientApp/app/admin/public/login/login.component';
-import * as i18 from '../../../ClientApp/app/admin/internal/users/users.component';
-import * as i19 from '../../../ClientApp/app/admin/internal/products/products.component';
-import * as i20 from '../../../ClientApp/app/admin/internal/admin.internal.component';
+import * as i17 from '../../../ClientApp/app/admin/internal/admin.internal.component';
+import * as i18 from '../../../ClientApp/app/admin/public/login/login.component';
+import * as i19 from '../../../ClientApp/app/admin/internal/users/users.component';
+import * as i20 from '../../../ClientApp/app/admin/internal/products/products.component';
 import * as i21 from '../../../ClientApp/app/client/public/login/login.component';
-import * as i22 from '../../../ClientApp/app/admin/public/admin.public.module';
-import * as i23 from '../../../ClientApp/app/admin/internal/admin.internal.module';
-import * as i24 from '../../../ClientApp/app/admin/admin.module';
-import * as i25 from '../../../ClientApp/app/client/public/client.public.module';
-import * as i26 from '../../../ClientApp/app/client/internal/client.internal.module';
-import * as i27 from '../../../ClientApp/app/client/client.module';
+import * as i22 from '../../../ClientApp/app/admin/admin-routing.module';
+import * as i23 from '../../../ClientApp/app/admin/public/admin.public.module';
+import * as i24 from '../../../ClientApp/app/admin/internal/admin.internal.module';
+import * as i25 from '../../../ClientApp/app/admin/admin.module';
+import * as i26 from '../../../ClientApp/app/client/public/client.public.module';
+import * as i27 from '../../../ClientApp/app/client/internal/client.internal.module';
+import * as i28 from '../../../ClientApp/app/client/client-routing.module';
+import * as i29 from '../../../ClientApp/app/client/client.module';
+import * as i30 from '../../../ClientApp/app/application-routing.module';
 export const AppModuleNgFactory:i0.NgModuleFactory<i1.AppModule> = i0.ɵcmf(i1.AppModule,
     [i2.ApplicationComponent],(_l:any) => {
       return i0.ɵmod([i0.ɵmpd(512,i0.ComponentFactoryResolver,i0.ɵCodegenComponentFactoryResolver,
-          [[8,[i3.AdminLoginComponentNgFactory,i4.UserComponentNgFactory,i5.ProductComponentNgFactory,
-              i6.AdminInternalComponentNgFactory,i7.ClientLoginComponentNgFactory,
+          [[8,[i3.AdminInternalComponentNgFactory,i4.AdminLoginComponentNgFactory,
+              i5.UserComponentNgFactory,i6.ProductComponentNgFactory,i7.ClientLoginComponentNgFactory,
               i8.ApplicationComponentNgFactory]],[3,i0.ComponentFactoryResolver],i0.NgModuleRef]),
           i0.ɵmpd(5120,i0.LOCALE_ID,i0.ɵm,[[3,i0.LOCALE_ID]]),i0.ɵmpd(4608,i9.NgLocalization,
               i9.NgLocaleLocalization,[i0.LOCALE_ID]),i0.ɵmpd(5120,i0.APP_ID,i0.ɵf,
@@ -92,28 +95,24 @@ export const AppModuleNgFactory:i0.NgModuleFactory<i1.AppModule> = i0.ɵcmf(i1.A
               i0.Compiler,([] as any[])),i0.ɵmpd(512,i0.NgModuleFactoryLoader,i0.SystemJsNgModuleLoader,
               [i0.Compiler,[2,i0.SystemJsNgModuleLoaderConfig]]),i0.ɵmpd(1024,i16.ROUTES,
               () => {
-                return [[{path:'login',component:i17.AdminLoginComponent}],[{path:'users',
-                    component:i18.UserComponent,resolve:{users:i13.UsersResolver}},
-                    {path:'products',component:i19.ProductComponent,resolve:{products:i15.ProductsResolver}}],
-                    [{path:'internal',component:i20.AdminInternalComponent,loadChildren:'./internal/admin.internal.module#AdminInternalModule'},
-                        {path:'public',loadChildren:'./public/admin.public.module#AdminPublicModule'}],
-                    [{path:'login',component:i21.ClientLoginComponent}],[{path:'internal',
-                        loadChildren:'./internal/client.internal.module#ClientInternalModule'},
-                        {path:'public',loadChildren:'./public/client.public.module#ClientPublicModule'}],
-                    [{path:'client',loadChildren:'./admin/admin.module#AdminModule'},
-                        {path:'admin',loadChildren:'./client/client.module#ClientModule'}]];
+                return [
+                    [{path:'admin',loadChildren:'./admin/admin.module#AdminModule'},
+                        {path:'client',loadChildren:'./client/client.module#ClientModule'}]];
               },([] as any[])),i0.ɵmpd(1024,i16.Router,i16.ɵe,[i0.ApplicationRef,i16.UrlSerializer,
               i16.ChildrenOutletContexts,i9.Location,i0.Injector,i0.NgModuleFactoryLoader,
               i0.Compiler,i16.ROUTES,i16.ROUTER_CONFIGURATION,[2,i16.UrlHandlingStrategy],
               [2,i16.RouteReuseStrategy]]),i0.ɵmpd(512,i16.RouterModule,i16.RouterModule,
-              [[2,i16.ɵa],[2,i16.Router]]),i0.ɵmpd(512,i11.ɵba,i11.ɵba,([] as any[])),
-          i0.ɵmpd(512,i11.FormsModule,i11.FormsModule,([] as any[])),i0.ɵmpd(512,i11.ReactiveFormsModule,
-              i11.ReactiveFormsModule,([] as any[])),i0.ɵmpd(512,i22.AdminPublicModule,
-              i22.AdminPublicModule,([] as any[])),i0.ɵmpd(512,i23.AdminInternalModule,
-              i23.AdminInternalModule,([] as any[])),i0.ɵmpd(512,i24.AdminModule,i24.AdminModule,
-              ([] as any[])),i0.ɵmpd(512,i25.ClientPublicModule,i25.ClientPublicModule,
-              ([] as any[])),i0.ɵmpd(512,i26.ClientInternalModule,i26.ClientInternalModule,
-              ([] as any[])),i0.ɵmpd(512,i27.ClientModule,i27.ClientModule,([] as any[])),
+              [[2,i16.ɵa],[2,i16.Router]]),i0.ɵmpd(512,i22.AdminRoutingModule,i22.AdminRoutingModule,
+              ([] as any[])),i0.ɵmpd(512,i11.ɵba,i11.ɵba,([] as any[])),i0.ɵmpd(512,
+              i11.FormsModule,i11.FormsModule,([] as any[])),i0.ɵmpd(512,i11.ReactiveFormsModule,
+              i11.ReactiveFormsModule,([] as any[])),i0.ɵmpd(512,i23.AdminPublicModule,
+              i23.AdminPublicModule,([] as any[])),i0.ɵmpd(512,i24.AdminInternalModule,
+              i24.AdminInternalModule,([] as any[])),i0.ɵmpd(512,i25.AdminModule,i25.AdminModule,
+              ([] as any[])),i0.ɵmpd(512,i26.ClientPublicModule,i26.ClientPublicModule,
+              ([] as any[])),i0.ɵmpd(512,i27.ClientInternalModule,i27.ClientInternalModule,
+              ([] as any[])),i0.ɵmpd(512,i28.ClientRoutingModule,i28.ClientRoutingModule,
+              ([] as any[])),i0.ɵmpd(512,i29.ClientModule,i29.ClientModule,([] as any[])),
+          i0.ɵmpd(512,i30.ApplicationRoutingModule,i30.ApplicationRoutingModule,([] as any[])),
           i0.ɵmpd(512,i1.AppModule,i1.AppModule,([] as any[]))]);
     });
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiQzovVXNlcnMvVmlsbWFudGFzL0RvY3VtZW50cy9WaXN1YWwgU3R1ZGlvIDIwMTcvUHJvamVjdHMvQW5ndWxhcjJDb3JlVGVtcGxhdGUvc3JjL1RlbXBsYXRlLkNsaWVudC9DbGllbnRBcHAvYXBwL2FwcGxpY2F0aW9uLm1vZHVsZS5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9DOi9Vc2Vycy9WaWxtYW50YXMvRG9jdW1lbnRzL1Zpc3VhbCBTdHVkaW8gMjAxNy9Qcm9qZWN0cy9Bbmd1bGFyMkNvcmVUZW1wbGF0ZS9zcmMvVGVtcGxhdGUuQ2xpZW50L0NsaWVudEFwcC9hcHAvYXBwbGljYXRpb24ubW9kdWxlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIiAiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7In0=
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiQzovVXNlcnMvVmlsbWFudGFzL0RvY3VtZW50cy9WaXN1YWwgU3R1ZGlvIDIwMTcvUHJvamVjdHMvQW5ndWxhcjJDb3JlVGVtcGxhdGUvc3JjL1RlbXBsYXRlLkNsaWVudC9DbGllbnRBcHAvYXBwL2FwcGxpY2F0aW9uLm1vZHVsZS5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9DOi9Vc2Vycy9WaWxtYW50YXMvRG9jdW1lbnRzL1Zpc3VhbCBTdHVkaW8gMjAxNy9Qcm9qZWN0cy9Bbmd1bGFyMkNvcmVUZW1wbGF0ZS9zcmMvVGVtcGxhdGUuQ2xpZW50L0NsaWVudEFwcC9hcHAvYXBwbGljYXRpb24ubW9kdWxlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIiAiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7In0=

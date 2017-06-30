@@ -4,7 +4,8 @@ import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser';
 
 import { ApplicationComponent } from './application.component';
-import { appRoutes } from './routes';
+
+import { ApplicationRoutingModule } from './application-routing.module';
 
 import { ClientModule } from './client/client.module'
 
@@ -13,9 +14,10 @@ import { AdminModule } from './admin/admin.module'
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot(appRoutes, { useHash: true, enableTracing: true }),
         AdminModule,
-        ClientModule
+        ClientModule,
+        ApplicationRoutingModule
+
     ],
     declarations: [
         ApplicationComponent,

@@ -1,7 +1,7 @@
 ﻿import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
-import { adminRoutes } from './admin.routes'
+import { AdminRoutingModule } from './admin-routing.module'
 
 import { AdminInternalComponent } from './internal/admin.internal.component'
 import { AdminInternalModule } from './internal/admin.internal.module'
@@ -12,7 +12,7 @@ import { AdminPublicModule } from './public/admin.public.module'
 
 @NgModule({
     imports: [
-        RouterModule.forChild(adminRoutes),
+        AdminRoutingModule,
         AdminPublicModule,
         AdminInternalModule
     ],

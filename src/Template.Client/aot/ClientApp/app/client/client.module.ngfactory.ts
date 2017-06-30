@@ -13,7 +13,8 @@ import * as i3 from '@angular/forms';
 import * as i4 from '@angular/router';
 import * as i5 from '../../../../ClientApp/app/client/public/client.public.module';
 import * as i6 from '../../../../ClientApp/app/client/internal/client.internal.module';
-import * as i7 from '../../../../ClientApp/app/client/public/login/login.component';
+import * as i7 from '../../../../ClientApp/app/client/client-routing.module';
+import * as i8 from '../../../../ClientApp/app/client/public/login/login.component';
 export const ClientModuleNgFactory:i0.NgModuleFactory<i1.ClientModule> = i0.ɵcmf(i1.ClientModule,
     ([] as any[]),(_l:any) => {
       return i0.ɵmod([i0.ɵmpd(512,i0.ComponentFactoryResolver,i0.ɵCodegenComponentFactoryResolver,
@@ -24,11 +25,12 @@ export const ClientModuleNgFactory:i0.NgModuleFactory<i1.ClientModule> = i0.ɵcm
           i0.ɵmpd(512,i3.FormsModule,i3.FormsModule,([] as any[])),i0.ɵmpd(512,i3.ReactiveFormsModule,
               i3.ReactiveFormsModule,([] as any[])),i0.ɵmpd(512,i5.ClientPublicModule,
               i5.ClientPublicModule,([] as any[])),i0.ɵmpd(512,i6.ClientInternalModule,
-              i6.ClientInternalModule,([] as any[])),i0.ɵmpd(512,i1.ClientModule,i1.ClientModule,
+              i6.ClientInternalModule,([] as any[])),i0.ɵmpd(512,i7.ClientRoutingModule,
+              i7.ClientRoutingModule,([] as any[])),i0.ɵmpd(512,i1.ClientModule,i1.ClientModule,
               ([] as any[])),i0.ɵmpd(1024,i4.ROUTES,() => {
-            return [[{path:'login',component:i7.ClientLoginComponent}],[{path:'internal',
+            return [[{path:'login',component:i8.ClientLoginComponent}],[{path:'internal',
                 loadChildren:'./internal/client.internal.module#ClientInternalModule'},
                 {path:'public',loadChildren:'./public/client.public.module#ClientPublicModule'}]];
           },([] as any[]))]);
     });
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiQzovVXNlcnMvVmlsbWFudGFzL0RvY3VtZW50cy9WaXN1YWwgU3R1ZGlvIDIwMTcvUHJvamVjdHMvQW5ndWxhcjJDb3JlVGVtcGxhdGUvc3JjL1RlbXBsYXRlLkNsaWVudC9DbGllbnRBcHAvYXBwL2NsaWVudC9jbGllbnQubW9kdWxlLm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL0M6L1VzZXJzL1ZpbG1hbnRhcy9Eb2N1bWVudHMvVmlzdWFsIFN0dWRpbyAyMDE3L1Byb2plY3RzL0FuZ3VsYXIyQ29yZVRlbXBsYXRlL3NyYy9UZW1wbGF0ZS5DbGllbnQvQ2xpZW50QXBwL2FwcC9jbGllbnQvY2xpZW50Lm1vZHVsZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIgIl0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7In0=
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiQzovVXNlcnMvVmlsbWFudGFzL0RvY3VtZW50cy9WaXN1YWwgU3R1ZGlvIDIwMTcvUHJvamVjdHMvQW5ndWxhcjJDb3JlVGVtcGxhdGUvc3JjL1RlbXBsYXRlLkNsaWVudC9DbGllbnRBcHAvYXBwL2NsaWVudC9jbGllbnQubW9kdWxlLm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL0M6L1VzZXJzL1ZpbG1hbnRhcy9Eb2N1bWVudHMvVmlzdWFsIFN0dWRpbyAyMDE3L1Byb2plY3RzL0FuZ3VsYXIyQ29yZVRlbXBsYXRlL3NyYy9UZW1wbGF0ZS5DbGllbnQvQ2xpZW50QXBwL2FwcC9jbGllbnQvY2xpZW50Lm1vZHVsZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIgIl0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsifQ==
