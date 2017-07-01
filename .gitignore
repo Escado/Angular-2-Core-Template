@@ -27,6 +27,7 @@ bld/
 aot/
 **/aot/**/*.ts
 wwwroot/
+ClientApp/**/*.js
 
 
 
