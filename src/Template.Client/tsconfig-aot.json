@@ -17,15 +17,6 @@
     },
     "files": [
         "ClientApp/app/application.module.ts",
-
-        "ClientApp/app/admin/admin.module.ts",
-        "ClientApp/app/admin/internal/admin.internal.module.ts",
-        "ClientApp/app/admin/public/admin.public.module.ts",
-
-        "ClientApp/app/client/client.module.ts",
-        "ClientApp/app/client/internal/client.internal.module.ts",
-        "ClientApp/app/client/public/client.public.module.ts",
-        
         "ClientApp/main-aot.ts"
     ],
     "angularCompilerOptions": {

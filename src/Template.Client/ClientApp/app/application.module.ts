@@ -7,15 +7,9 @@ import { ApplicationComponent } from './application.component';
 
 import { ApplicationRoutingModule } from './application-routing.module';
 
-import { ClientModule } from './client/client.module'
-
-import { AdminModule } from './admin/admin.module'
-
 @NgModule({
     imports: [
         BrowserModule,
-        AdminModule,
-        ClientModule,
         ApplicationRoutingModule
 
     ],

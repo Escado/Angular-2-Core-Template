@@ -24,10 +24,9 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
-**/wwwroot/**/*.js
-**/wwwroot/**/*.js.map
-**/ClientApp/**/*.js
-**/ClientApp/**/*.js.map
+aot/
+**/aot/**/*.ts
+wwwroot/
 
 
 
