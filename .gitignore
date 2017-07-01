@@ -25,12 +25,10 @@ bld/
 [Bb]in/
 [Oo]bj/
 aot/
-**/aot/**/*.ts
 wwwroot/
 wwwroot/[Ii]ndex.html
 wwwroot/favicon.ico
 assets/
-ClientApp/**/*.js
 
 
 
