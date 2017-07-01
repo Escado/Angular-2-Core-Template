@@ -31,8 +31,7 @@ module.exports = {
     },
 
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.ts$/,
                 loaders: [
                     'awesome-typescript-loader',
@@ -81,10 +80,9 @@ module.exports = {
             },
             sourceMap: false
         }),
-        new webpack.optimize.CommonsChunkPlugin(
-            {
-                name: ['vendor', 'polyfills']
-            }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor', 'polyfills']
+        }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -93,8 +91,7 @@ module.exports = {
         }),
 
         new CopyWebpackPlugin([
-            { from: '../ClientApp/img/*.*', to: 'assets/', flatten: true }
+            { from: 'ClientApp/img/*.*', to: 'assets/', flatten: true }
         ])
     ]
 };
-

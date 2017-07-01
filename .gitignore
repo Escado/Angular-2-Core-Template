@@ -26,9 +26,9 @@ bld/
 [Oo]bj/
 aot/
 wwwroot/
+wwwroot/**
 wwwroot/[Ii]ndex.html
 wwwroot/favicon.ico
-assets/
 
 
 
