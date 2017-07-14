@@ -24,6 +24,10 @@ namespace Template.API.Controllers
             return $"Added user to list: {name} {surname}";
         }
 
+
+
+
+
         [HttpGet("get/{id}")]
         public IActionResult GetUser(int id)
         {
