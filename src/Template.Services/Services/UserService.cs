@@ -12,6 +12,7 @@ namespace Template.Services.Services
 
     public class UserService : IUserService
     {
+        //Nx readonly? because then you cant change the values, so how can you add value ??
         private readonly IUserRepository _userRepository;
 
         public UserService(IUserRepository userRepository)
@@ -32,7 +33,6 @@ namespace Template.Services.Services
             {
                 throw new TemplateException(ExceptionCode.User.DuplicateUser);
             }
-
             var userEntry = new User() {
                 Name = firstName,
                 Surname = surname
@@ -41,6 +41,13 @@ namespace Template.Services.Services
             var result = _userRepository.Add(userEntry);
 
             return result;
+        }
+        public User GetUserById (int id)
+        {
+            var user = _userRepository.Get(id);
+            if ((string.IsNullOrWhiteSpace(user.Name)) || (string.IsNullOrWhiteSpace(user.Surname)))
+                throw new TemplateException(ExceptionCode.User.NoUser);
+            return user;
         }
     }
 }
