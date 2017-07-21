@@ -1,0 +1,101 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src=""
+@using (Html.BeginForm("Add", "User", FormMethod.Post, new { id = "forma" }))
+{
+    <input type="text" name="name" placeholder="cbb"/>
+    <input type="text" name="surname" placeholder="cbb" />
+    <input type="submit" />
+}
+
+<input id="getUsers" type="button" value="Gauti duxus" />
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                Surname
+            </td>
+        </tr>
+    </thead>
+    <tbody class="table" id="lentele">
+
+    </tbody>
+</table>
+
+<script>
+
+    var getUsers = function () {
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetUsers", "User")',
+            data: $("#forma").serialize(), // serializes the form's elements.
+            success: function (data) {
+                $('#lentele').children().remove();
+                $.each(data, function (index, value) {
+                    var row = '<tr><td>' + value.name + '</td><td>' + value.surname + '</td></tr>';
+                    $('#lentele').append(row);
+                });
+            },
+            error: function (data) {
+                alert(data.responseText);
+
+            }
+        });
+
+    }
+
+
+    $('#getUsers').click(function () {
+        getUsers();
+    });
+
+    $("#forma").submit(function (e) {
+
+        var url = "@Url.Action("Add", "User")"; // the script where you handle the form input.
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#forma").serialize(), // serializes the form's elements.
+            success: function (data) {
+                alert(data); // show response from the php script.
+                getUsers();
+            },
+            error: function (data) {
+                alert(data);
+
+            }
+        });
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+
+        $("#forma2").submit(function (e) {
+
+        var url = "@Url.Action("Add", "User")"; // the script where you handle the form input.
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#forma2").serialize(), // serializes the form's elements.
+            success: function (data) {
+                alert(data); // show response from the php script.
+            },
+            error: function (data) {
+                alert(data);
+
+            }
+        });
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+</script>

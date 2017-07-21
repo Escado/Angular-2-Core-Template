@@ -21,14 +21,19 @@ namespace Template.Tests.Services
         [Fact]
         public void add_user_ok()
         {
+            // SETUP 
             var firstname = "firstname";
             var surname = "surname";
 
-            _userRepository.Setup(x => x.Add(It.Is<User>(xx => xx.Name.Equals(firstname) && xx.Surname.Equals(surname)))).Returns(1);
             _userRepository.Setup(x => x.GetByNameAndSurname(firstname, surname));
+            _userRepository.Setup(x => x.Add(It.Is<User>(xx => xx.Name.Equals(firstname) && xx.Surname.Equals(surname)))).Returns(1);
 
+
+            // ACT
             var result = SUT.Add(firstname, surname);
 
+
+            // ASSERT
             _userRepository.Verify(x => x.GetByNameAndSurname(It.Is<string>(xx => firstname.Equals(xx)), It.Is<string>(xx => surname.Equals(xx))), Times.Once);
             _userRepository.Verify(x => x.Add(It.Is<User>(xx => xx.Name.Equals(firstname) && xx.Surname.Equals(surname))), Times.Once);
 

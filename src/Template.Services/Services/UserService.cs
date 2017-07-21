@@ -7,12 +7,23 @@ namespace Template.Services.Services
 {
     public interface IUserService
     {
+        /// <summary>
+        /// fslkfnseklfsenljf
+        /// </summary>
+        /// <param name="firstName">111111</param>
+        /// <param name="surname">22222222</param>
+        /// <returns>bybi</returns>
         int Add(string firstName, string surname);
+        /// <summary>
+        /// dawdwa
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        User GetById(int id);
     }
 
     public class UserService : IUserService
     {
-        //Nx readonly? because then you cant change the values, so how can you add value ??
         private readonly IUserRepository _userRepository;
 
         public UserService(IUserRepository userRepository)
@@ -37,17 +48,20 @@ namespace Template.Services.Services
                 Name = firstName,
                 Surname = surname
             };
-
+            
             var result = _userRepository.Add(userEntry);
 
             return result;
         }
-        public User GetUserById (int id)
+        public User GetById (int id)
         {
             var user = _userRepository.Get(id);
-            if ((string.IsNullOrWhiteSpace(user.Name)) || (string.IsNullOrWhiteSpace(user.Surname)))
+
+            // TODO: null check
+            if ((string.IsNullOrWhiteSpace(user?.Name)) || (string.IsNullOrWhiteSpace(user?.Surname)))
                 throw new TemplateException(ExceptionCode.User.NoUser);
             return user;
         }
+       
     }
 }

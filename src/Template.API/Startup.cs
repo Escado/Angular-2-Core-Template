@@ -47,10 +47,10 @@ namespace Template.API
 
             // Repositories
             services.AddScoped<IUserRepository, UserRepository>();
-
+            services.AddScoped<IProductRepository, ProductRepository>();
             //Services
             services.AddScoped<IUserService, UserService>();
-
+            services.AddScoped<IProductService, ProductService>();
 
             // Add framework services.
             services.AddMvc();
@@ -59,8 +59,14 @@ namespace Template.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseStaticFiles();
             app.UseMiddleware<ExceptionMiddleware>();
-            app.UseMvc();
+            app.UseMvc(config =>
+            {
+                config.MapRoute(
+                    name: "default",
+                    template: "{controller=User}/{action=Index}");
+            });
         }
     }
 }

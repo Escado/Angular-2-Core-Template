@@ -39,7 +39,7 @@ namespace Template.Common.Exceptions
             [Description("Product Vendor price cannot be bigger than a product listing price")]
             VendorBiggerThanListingPrice = 30003,
 
-            [Description("Product name doesn't exists")]
+            [Description("Product with that name was not found")]
             NoProduct = 30004
 
 

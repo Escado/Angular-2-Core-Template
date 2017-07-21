@@ -13,18 +13,11 @@ namespace Template.Repositories.Repositories
 
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        public ProductRepository(NpgsqlConnection connection) : base(connection)
-        {
-        }
+        public ProductRepository(NpgsqlConnection connection) : base(connection) {}
 
-   
         Product IProductRepository.GetByProductName(string name)
         {
-            //I dont know why there neednt upperCase?
             return QueryFirst<Product>("SELECT * FROM public.\"product\" WHERE name = @name", new DynamicParameters(new { name = name}));
         }
-
     }
-
-
 }
