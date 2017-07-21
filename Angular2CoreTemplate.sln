@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A7E7B1F7-80A1-4D83-817D-204875AB1CB8}"
 EndProject
@@ -75,12 +75,12 @@ Global
 		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Debug|x64.Build.0 = Debug|Any CPU
 		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Debug|x86.Build.0 = Debug|Any CPU
-		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|Any CPU.ActiveCfg = Develop|Any CPU
-		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|Any CPU.Build.0 = Develop|Any CPU
-		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|x64.ActiveCfg = Develop|Any CPU
-		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|x64.Build.0 = Develop|Any CPU
-		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|x86.ActiveCfg = Develop|Any CPU
-		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|x86.Build.0 = Develop|Any CPU
+		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|Any CPU.ActiveCfg = Development|Any CPU
+		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|Any CPU.Build.0 = Development|Any CPU
+		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|x64.ActiveCfg = Development|Any CPU
+		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|x64.Build.0 = Development|Any CPU
+		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|x86.ActiveCfg = Development|Any CPU
+		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Develop|x86.Build.0 = Development|Any CPU
 		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{42DCABF8-ECA6-477F-828D-46D9C8DF296E}.Release|x64.ActiveCfg = Release|Any CPU

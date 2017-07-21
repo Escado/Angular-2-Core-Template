@@ -10,6 +10,13 @@
     <PackageReference Include="FluentMigrator.Runner" Version="1.6.2" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ViewModels\" />
     <Folder Include="WebParams\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Template.Common\Template.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
 </Project>

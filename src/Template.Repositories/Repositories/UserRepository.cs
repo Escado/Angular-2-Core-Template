@@ -17,7 +17,7 @@ namespace Template.Repositories.Repositories
 
         User IUserRepository.GetByNameAndSurname(string name, string surname)
         {
-            return QueryFirst<User>("Select * from public.\"user\" where name = @name and surname = @surname", new DynamicParameters(new { name = name, surname = surname }));
+            return QueryFirst<User>("SELECT * FROM public.\"user\" WHERE name = @name and surname = @surname", new DynamicParameters(new { name = name, surname = surname }));
         }
     }
 }
