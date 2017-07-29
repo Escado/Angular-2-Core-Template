@@ -18,18 +18,20 @@
             "node",
             "jasmine"
         ],
-        "typeRoots": [
-            "./node_modules/@types/"
-        ]
+      "typeRoots": [
+        "./node_modules/@types/"
+      ],
+      "outDir": "wwwroot"
     },
     "exclude": [
         "node_modules",
         "aot",
-        "ClientApp/main-aot.ts"
+        "ClientApp/main-aot.ts",
+        "wwwroot"
     ],
     "awesomeTypescriptLoaderOptions": {
         "useWebpackText": true
     },
-    "compileOnSave": false,
-    "buildOnSave": false
+    "compileOnSave": true,
+    "buildOnSave": true
 }

@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
     { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-    { path: 'client', loadChildren: './client/client.module#ClientModule' },
+    { path: '', loadChildren: './client/client.module#ClientModule' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
   providers: []
 })

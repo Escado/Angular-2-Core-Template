@@ -1,8 +1,9 @@
 import 'jquery/src/jquery';
 import 'bootstrap/dist/js/bootstrap';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
+import './css/bootstrap.css';
+//import './css/bootstrap-theme.css';
+import './css/styles.css';
 
 import './favicon.ico';
 

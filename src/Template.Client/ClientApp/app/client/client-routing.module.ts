@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
     { path: 'internal', loadChildren: './internal/client.internal.module#ClientInternalModule' },
-    { path: 'public', loadChildren: './public/client.public.module#ClientPublicModule' }
+    { path: '', loadChildren: './public/client.public.module#ClientPublicModule' }
 ];
 
 @NgModule({
