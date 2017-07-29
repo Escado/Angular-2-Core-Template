@@ -10,6 +10,7 @@
     <PackageReference Include="FluentMigrator.Runner" Version="1.6.2" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\ViewModels\" />
     <Folder Include="WebParams\Base\" />
   </ItemGroup>
 </Project>

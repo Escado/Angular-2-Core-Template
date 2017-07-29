@@ -3,6 +3,7 @@
     public class ConfigSettings
     {
         public string ConnectionString { get; set; }
+        public string MigrationNamespace { get; set; }
         public string Test { get; set; }
 
         public string ClientUrl { get; set; }

@@ -32,7 +32,10 @@ namespace Template.API
             var migrationNamespace = Configuration["ConfigSettings:MigrationNamespace"];
             BaseRepository.ConnectionString = connectionString;
             MigrationHelper.CreateDbIfNoneExists(connectionString);
+            ViewRepository viewRepository = new ViewRepository(new NpgsqlConnection(connectionString));
+            viewRepository.DropViews();
             MigrationHelper.MigrateUp(connectionString, migrationNamespace);
+            viewRepository.CreateViews();
             MapperHelper.MapAllEntities();
         }
 
