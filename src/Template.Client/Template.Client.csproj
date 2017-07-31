@@ -24,4 +24,12 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.AspNetCore.Server.IISIntegration.Tools" Version="1.0.0-preview2-final" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="ClientApp\app\shared\base\services\http - Copy.interceptor.factory.js">
+      <DependentUpon>http - Copy.interceptor.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\app\shared\base\services\http - Copy.interceptor.js">
+      <DependentUpon>http.interceptor.factory.ts</DependentUpon>
+    </None>
+  </ItemGroup>
 </Project>

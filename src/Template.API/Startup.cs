@@ -63,7 +63,12 @@ namespace Template.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseMiddleware<ExceptionMiddleware>();
+#if !RELEASE
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:52672").AllowAnyHeader().AllowAnyMethod());
+#endif
             app.UseMvc();
+
         }
     }
 }
