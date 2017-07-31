@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Template.Common.Exceptions;
 using Template.Entities.DbModels;
 using Template.Repositories.Repositories;
@@ -7,19 +8,9 @@ namespace Template.Services.Services
 {
     public interface IUserService
     {
-        /// <summary>
-        /// fslkfnseklfsenljf
-        /// </summary>
-        /// <param name="firstName">111111</param>
-        /// <param name="surname">22222222</param>
-        /// <returns>bybi</returns>
         int Add(string firstName, string surname);
-        /// <summary>
-        /// dawdwa
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         User GetById(int id);
+        IEnumerable<User> GetUsers();
     }
 
     public class UserService : IUserService
@@ -60,6 +51,15 @@ namespace Template.Services.Services
             // TODO: null check
             if ((string.IsNullOrWhiteSpace(user?.Name)) || (string.IsNullOrWhiteSpace(user?.Surname)))
                 throw new TemplateException(ExceptionCode.User.NoUser);
+            return user;
+        }
+        public IEnumerable<User> GetUsers()
+        {
+            var user = _userRepository.Get();
+            if (user == null)
+            {
+                throw new TemplateException(ExceptionCode.User.NoUser);
+            }
             return user;
         }
        

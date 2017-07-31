@@ -1,0 +1,67 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+@using (Html.BeginForm("add", "Product", FormMethod.Post, new { id = "ProductForma" }))
+{
+    <input type="text" name="Name" placeholder="Name" />
+    <input type="text" name="Description" placeholder="Description" />
+    <input type="number" step="0.01" min="0.01" name="VendorPrice" placeholder="Vendor price" />
+    <input type="number" step="0.01" name="ListingPrice" placeholder="Listing price" />
+    <input type="submit" />
+}
+<input id="getProduct" type="button" value="Get product" />
+
+<table>
+    <thead>
+        <tr>
+            <td>Id </td> <td> Name</td> <td>Description</td><td>Vendor Price</td><td>Listing Price</td><td>Date</td><td>State</td>
+        </tr>
+    </thead>
+    <tbody class="table" id="lentele"></tbody>
+</table>
+
+<script>
+
+    var getProducts = function () {
+        $.ajax({
+         //   beforeSend: function () {
+                //  alert('beforesend');
+            //},
+            type: "GET",
+            url: '@Url.Action("GetAll", "Product")',
+        //    data: $("#ProductForma").serialize(), // serializes the form's elements.
+            success: function (data) {
+                $('#lentele').children().remove();
+                $.each(data, function (index, value) {
+                    var row = '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.description + '</td><td>' + value.vendorPrice + '</td><td>' + value.listingPrice + '</td><td>' + value.createDate + '</td><td>' + value.status + '</td></tr>';
+                    $('#lentele').append(row);
+                });
+            },
+            error: function (data) {
+                alert(data.responseText);
+
+            }
+        });
+
+    }
+    $('#getProduct').click(function () {
+        getProducts();
+    });
+    $("#ProductForma").submit(function (e) {
+
+        var url = "@Url.Action("add", "Product")"; // the script where you handle the form input.
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#ProductForma").serialize(), // serializes the form's elements.
+            success: function (data) {
+                alert(data); // show response from the php script.
+            },
+            error: function (data) {
+                alert(data);
+            }
+        });
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+
+</script>

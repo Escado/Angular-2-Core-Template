@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Template.Common.Exceptions;
 using Template.Entities.DbModels;
+using Template.Entities.Enums;
 using Template.Repositories.Base;
 using Template.Repositories.Repositories;
 
@@ -12,9 +13,10 @@ namespace Template.Services.Services
 {
     public interface IProductService
     {
-        int Create(string name, string description, double vendor, double listing, DateTime data, Activity stat);
-        void Update(string name, string description, double vendor, double listing, DateTime data, Activity stat);
-        Product Read(string name);
+        int Create(Product model);
+        void Update(Product model, Activity stat);
+        Product Read(int id);
+        IEnumerable<Product> GetAll();
     }
     public class ProductService : IProductService
     {
@@ -25,14 +27,14 @@ namespace Template.Services.Services
             _productRepository = productRepository;
         }
 
-        public int Create(string name, string description, double vendor, double listing, DateTime data, Activity stat)
+        public int Create(Product model)
         {
 
-            if (!Validation(name, description, vendor, listing))
+            if (!Validation(model.Name, model.Description, model.VendorPrice, model.ListingPrice))
             {
                 throw new TemplateException(ExceptionCode.General.DataValidationFailed);
             }
-            var dbProduct = _productRepository.GetByProductName(name);
+            var dbProduct = _productRepository.GetByProductName(model.Name);
 
             if (dbProduct != null)
             {
@@ -40,12 +42,12 @@ namespace Template.Services.Services
             }
             var productEntry = new Product()
             {
-                Name = name,
-                Description = description,
-                VendorPrice = vendor,
-                ListingPrice = listing,
-                CreateDate = data,
-                Status = stat
+                Name = model.Name,
+                Description = model.Description,
+                VendorPrice = model.VendorPrice,
+                ListingPrice = model.ListingPrice,
+                CreateDate = model.CreateDate,
+                Status = Activity.Active
             };
 
             var result = _productRepository.Add(productEntry);
@@ -53,46 +55,51 @@ namespace Template.Services.Services
             return result;
         }
 
-        public Product Read(string name)
+        public Product Read(int id)
         {
 
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new TemplateException(ExceptionCode.Product.EmptyField);
-            }
-            var dbProduct = _productRepository.GetByProductName(name);
+            //if (int.(model.Id))
+            //{
+            //    throw new TemplateException(ExceptionCode.Product.EmptyField);
+            //}
+            var dbProduct = _productRepository.GetByProductId(id);
             if (dbProduct == null)
             {
                 throw new TemplateException(ExceptionCode.Product.NoProduct);
             }
             return dbProduct;
         }
-
-        public void Update(string name, string description, double vendor, double listing, DateTime data, Activity stat)
+        public IEnumerable<Product> GetAll()
         {
-            if (!Validation(name, description, vendor, listing))
+            var dbProduct = _productRepository.Get();
+            return dbProduct;
+        }
+
+        public void Update(Product model, Activity stat)
+        {
+            if (!Validation(model.Name, model.Description, model.VendorPrice, model.ListingPrice))
             {
                 throw new TemplateException(ExceptionCode.Product.EmptyField);
             }
-            var dbProduct = _productRepository.GetByProductName(name);
+            var dbProduct = _productRepository.GetByProductId(model.Id);
 
             if (dbProduct == null)
             {
                 throw new TemplateException(ExceptionCode.Product.NoProduct);
             }
 
-            dbProduct.Name = name;
-            dbProduct.Description = description;
-            dbProduct.VendorPrice = vendor;
-            dbProduct.ListingPrice = listing;
-            dbProduct.CreateDate = data;
+            dbProduct.Name = model.Name;
+            dbProduct.Description = model.Description;
+            dbProduct.VendorPrice = model.VendorPrice;
+            dbProduct.ListingPrice = model.ListingPrice;
+            dbProduct.CreateDate = model.CreateDate;
             dbProduct.Status = stat;
             _productRepository.Update(dbProduct);
         }
 
-        public bool Validation(string name, string description, double vendor, double listing)
+        public bool Validation(string name, string desp, double vendor, double listing)
         {
-            if (string.IsNullOrWhiteSpace(name) || vendor > 0 || double.IsNaN(listing))
+            if (string.IsNullOrWhiteSpace(name) || vendor < 0 || listing < 0)
             {
                 throw new TemplateException(ExceptionCode.Product.EmptyField);
             }

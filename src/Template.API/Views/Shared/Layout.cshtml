@@ -1,1 +1,40 @@
 ﻿@RenderBody()
+
+<input id="ProductBt" type="button" value="Product" />
+<input id="UserBt" type="button" value="User" />
+
+<script>
+    var productPage = function () {
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("Index", "Product")',
+        //    data: $("#ProductForma").serialize(), // serializes the form's elements. 
+            success: function (data) {
+                alert(data.responseText);
+            },
+            error: function (data) {
+                alert(data.responseText);
+            }
+        });
+    }
+    $('#productBt').click(function () {
+        productPage();
+    });
+        var userPage = function () {
+        $.ajax({
+        
+            type: "GET",
+            url: '@Url.Action("Index", "User")',
+        //    data: $("#ProductForma").serialize(), // serializes the form's elements.
+            success: function (data) {
+                alert(data.responseText);
+            },
+            error: function (data) {
+                alert(data.responseText);
+            }
+        });
+    }
+    $('#UserBt').click(function () {
+        userPage();
+    });
+</script>

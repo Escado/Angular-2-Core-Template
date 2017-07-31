@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Template.Entities.DbModels;
+using Template.Entities.Enums;
 using Template.Repositories.Repositories;
 using Template.Services.Services;
 
@@ -21,39 +22,54 @@ namespace Template.API.Controllers
             _productRepository = productRepository;
         }
 
-        [HttpGet("add/{name}/{description}/{vendor}/{listing}")]
-        public string AddProduct(Product model)
+        [HttpPost("add")]
+        public IActionResult AddProduct(Product model)
         {
+            _productService.Create(model);
 
-            _productService.Create(model.Name, model.Description, model.VendorPrice, model.ListingPrice, DateTime.Now, model.Status);
+            return Ok();
 
-            return $"Added product to list:";
-          
         }
         [HttpGet("remove/{id}")]
         public string RemoveProduct(int id)
         {
-           _productRepository.Remove(id);
+            _productRepository.Remove(id);
 
             return $"Removed product {id} from the list";
         }
         [HttpGet("update/{name}/{description}/{vendor}/{listing}")]
-        public string UpdateProduct(string name, string description, double vendor, double listing)
+        public string UpdateProduct(Product model)
         {
             var date = DateTime.Today;
             var activity = Activity.Active;
-            _productService.Update(name, description, vendor, listing, date, activity);
+            _productService.Update(model, activity);
 
-            return $"Updated product to list: {name} {description} {vendor} {listing} {date} {activity}";
+            return $"Updated product to list:";
+
         }
-        [HttpGet("read/{name}")]
-        public string ReadProduct(string name)
+        [HttpGet("read/{id}")]
+        public IActionResult ReadProduct(int id)
         {
-           var product =  _productService.Read(name);
+            var product = _productService.Read(id);
 
-            return $"Product Id: {product.Id} product name {product.Name} product description: {product.Description} vendor: {product.VendorPrice}" +
-                $"listing {product.ListingPrice} Date {product.CreateDate}";
+            return Ok(product);
+        }
+        [HttpGet("getAll")]
+        public IActionResult GetAll()
+        {
+            var products = _productService.GetAll();
+            return Ok(products);
         }
 
+        [HttpGet("index")]
+        public IActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost("add")]
+        public IActionResult add()
+        {
+            return View();
+        }
     }
 }

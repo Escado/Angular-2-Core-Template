@@ -8,6 +8,7 @@ namespace Template.Repositories.Repositories
 {
     public interface IProductRepository : IBaseRepository<Product>
     {
+        Product GetByProductId(int id);
         Product GetByProductName(string name);
     }
 
@@ -15,9 +16,14 @@ namespace Template.Repositories.Repositories
     {
         public ProductRepository(NpgsqlConnection connection) : base(connection) {}
 
-        Product IProductRepository.GetByProductName(string name)
+        public Product GetByProductName(string name)
         {
-            return QueryFirst<Product>("SELECT * FROM public.\"product\" WHERE name = @name", new DynamicParameters(new { name = name}));
+            return QueryFirst<Product>("SELECT * FROM public.\"product\" WHERE name = @name", new DynamicParameters(new { name = name }));
+        }
+
+        Product IProductRepository.GetByProductId(int id)
+        {
+            return QueryFirst<Product>("SELECT * FROM public.\"product\" WHERE id = @id", new DynamicParameters(new { id = id}));
         }
     }
 }

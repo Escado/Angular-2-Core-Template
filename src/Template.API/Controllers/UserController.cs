@@ -8,13 +8,9 @@ namespace Template.API.Controllers
     [Route("user")]
     public class UserController : Controller
     {
-        private readonly IUserRepository _userRepository; // why readonly?
+        private readonly IUserRepository _userRepository; 
         private readonly IUserService _userService;
-        //public UserController(IUserRepository userRepository)
-        //{
-        //    _userRepository = userRepository;
-        //}
-
+      
         public UserController(IUserService userService, IUserRepository userRepository)
         {
             _userService = userService;
@@ -23,20 +19,17 @@ namespace Template.API.Controllers
 
         #region API
 
-
         [HttpGet("get")]
         public IActionResult GetUsers()
         {
-
-            var users = _userRepository.Get();
-
+            // var users = _userRepository.Get();
+            var users = _userService.GetUsers();
             return Ok(users);
         }
 
         [HttpPost("add")]
         public string AddUser(User model)
         {
-            //  _userRepository.Add(new User() { Name = name, Surname = surname });
             _userService.Add(model.Name, model.Surname);
             return $"Added user to list: ";
         }
@@ -44,10 +37,7 @@ namespace Template.API.Controllers
         [HttpGet("get/{id}")]
         public string GetUser(int id)
         {
-            //return Ok(_userRepository.Get(id) ?? new User() { Name = "Not", Surname = "Found" });
-
             var user = _userService.GetById(id);
-
             return $"User with id {id} name is {user.Name} and surname is {user.Surname}";
         }
 
