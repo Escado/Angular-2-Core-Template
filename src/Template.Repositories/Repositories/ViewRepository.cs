@@ -38,7 +38,20 @@ namespace Template.Repositories.Repositories
 
         public void DropViews()
         {
+            var type = typeof(IBaseSqlView);
+            var types = AppDomain.CurrentDomain.GetAssemblies() // TODO: consider optimizing if startup becomes too heavy
+                .SelectMany(s => s.GetTypes())
+                .Where(p => p.IsClass && type.IsAssignableFrom(p));
 
+            foreach (var item in types)
+            {
+                var viewClass = (IBaseSqlView)Activator.CreateInstance(item);
+
+                foreach (var sql in viewClass.DropViews)
+                {
+                    Connection.Execute(sql);
+                }
+            }
         }
     }
 }
