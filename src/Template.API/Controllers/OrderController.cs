@@ -27,54 +27,5 @@ namespace Template.API.Controllers
         {
             return Ok(_orderRepository.Get());
         }
-
-        [HttpGet("fill")]
-        public IActionResult Fill()
-        {
-
-            var id =_userRepository.Add(new User()
-            {
-                Name = "asilas",
-                Surname = "kebabas"
-            });
-
-            _orderRepository.Add(new Order()
-            {
-                UserId = 1,
-                Amount = 2f,
-                CreateDate = DateTime.Now,
-                ProductName = "Kebabai",
-                Status = OrderStatus.WaitingForApproval
-            });
-
-            _orderRepository.Add(new Order()
-            {
-                UserId = 1,
-                Amount = 2f,
-                CreateDate = DateTime.Now,
-                ProductName = "Kebabai2",
-                Status = OrderStatus.WaitingForApproval
-            });
-
-            _orderRepository.Add(new Order()
-            {
-                UserId = 1,
-                Amount = 4f,
-                CreateDate = DateTime.Now,
-                ProductName = "Kebabai3",
-                Status = OrderStatus.WaitingForApproval
-            });
-
-            _orderRepository.Add(new Order()
-            {
-                UserId = 1,
-                Amount = 3f,
-                CreateDate = DateTime.Now,
-                ProductName = "Kebabai4",
-                Status = OrderStatus.WaitingForApproval
-            });
-
-            return Ok();
-        }
     }
 }

@@ -7,6 +7,7 @@ namespace Template.Common.Helpers
     public class StringHelper
     {
         private static Random random = new Random((int)DateTime.Now.Ticks);
+        private static string[] reservedKeywords = new string[2] { "Order","User" };
 
         public static char[] Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
@@ -34,10 +35,8 @@ namespace Template.Common.Helpers
             str = str.Trim('"'); //trim quotes for postgresql, since we use lowercase only
             var result = string.Concat(str.Select((x, i) => i > 0 && char.IsUpper(x) ? "_" + x.ToString() : x.ToString())).ToLower();
 
-            if (result.Equals("user")) result = "\"user\"";
-            else if (result.Equals("package")) result = "\"package\"";
-            else if (result.Equals("like")) result = "\"like\"";
-            
+            if (reservedKeywords.Any(x => x.ToLower().Equals(result)))
+                result = "\"" + result + "\"";
             return result;
         }
 
