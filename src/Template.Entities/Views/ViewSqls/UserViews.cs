@@ -23,7 +23,7 @@ namespace Template.Entities.Views.ViewSqls
         public IEnumerable<string> DropViews {
             get => new List<string>()
             {
-                $@"DROP VIEW ""user_table_view"""
+                $@"DROP VIEW IF EXISTS ""user_table_view"""
             };
         }
     }

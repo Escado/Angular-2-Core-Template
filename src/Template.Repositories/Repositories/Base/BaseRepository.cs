@@ -5,15 +5,14 @@ using System.Data.Common;
 using System.Linq;
 using Dapper;
 using DapperExtensions;
-using Template.Common.Helpers;
-using Template.Entities.DbModels.Base;
-using Template.Entities.WebParams.Base;
-using Template.Repositories.Helpers;
-using Template.Repositories.Mappers;
 using Npgsql;
-using Template.Entities.Virtual.Base;
+using Template.Repositories.Helpers;
+using Template.Entities.WebParams.Base;
+using Template.Entities.DbModels.Base;
 using Template.Entities.Attributes;
-
+using Template.Common.Helpers;
+using Template.Repositories.Mappers;
+using Template.Entities.Virtual.Base;
 
 namespace Template.Repositories.Base
 {

@@ -13,9 +13,9 @@ namespace Template.Entities.WebParams.Base
         NoComparing,
         [Description("=")]
         Equals,
-        [Description("@>")]
-        IsPartOfList,
-        [Description("IN")]
+        [Description("= ANY")]
+        IsPartOfStringList,
+        [Description("= ANY")]
         IsPartOfEnumList,
         [Description("LIKE")]
         Contains,

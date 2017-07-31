@@ -9,19 +9,20 @@ using DapperExtensions;
 using DapperExtensions.Mapper;
 using DapperExtensions.Sql;
 using Dapper;
-using Template.Common.Helpers;
+using Template.Repositories.Helpers;
 using Template.Entities.DbModels.Base;
 using Template.Entities.WebParams.Base;
-using Template.Repositories.Base;
 using Template.Common.Extensions;
+using Template.Common.Helpers;
 using Template.Repositories.Mappers;
+using Template.Repositories.Base;
 
 namespace Template.Repositories.Helpers
 {
     public static class SqlHelper
     {
         private static SqlGeneratorImpl _sqlGenerator = new SqlGeneratorImpl(new DapperExtensionsConfiguration(typeof(AutoClassMapper<>), new List<Assembly>(), new CustomPostgreSqlDialiect()));
-        
+
         public static string WhereClause_NoSortAndLimit<TDatabaseModel>(Params frontendParams, out DynamicParameters sqlParameters)
             where TDatabaseModel : BaseEntity
         {
@@ -161,17 +162,33 @@ namespace Template.Repositories.Helpers
                     result.AppendLine("(" + property.PropertyName + ")");
 
                 //for lists
-                else if (property.Operator == ExpressionParsingOperator.IsPartOfEnumList && 
-                    property.PropertyValue is IEnumerable && ((IEnumerable)property.PropertyValue).ToDynamicList().Count > 0)
+                else if (property.Operator == ExpressionParsingOperator.IsPartOfEnumList && property.PropertyValue is IEnumerable)
                 {
-                    var sb = new StringBuilder();
-                    foreach (var value in (IEnumerable)property.PropertyValue)
+                    if (((IEnumerable)property.PropertyValue).ToDynamicList().Count > 0)
                     {
                         var randomString = StringHelper.RandomString(32);
-                        sb.Append($":{randomString},");
-                        sqlParameters.Add(randomString, value);
+                        sqlParameters.Add(randomString, ((IEnumerable)property.PropertyValue).ToDynamicArray<int>());
+                        result.AppendLine($"{property.PropertyName} {operatorStr} (:{randomString})");
                     }
-                    result.AppendLine($"{property.PropertyName} {operatorStr} ({sb.ToString().TrimEnd(',')})");
+                    else
+                    {
+                        result.Remove(result.Length - 5, 5);//REMOVE LAST " AND " for this property
+                        continue;
+                    }
+                }
+                else if (property.Operator == ExpressionParsingOperator.IsPartOfStringList && property.PropertyValue is IEnumerable)
+                {
+                    if (((IEnumerable)property.PropertyValue).ToDynamicList().Count > 0)
+                    {
+                        var randomString = StringHelper.RandomString(32);
+                        sqlParameters.Add(randomString, ((IEnumerable)property.PropertyValue).ToDynamicArray<string>().Select(x => x.ToLowerInvariant()).ToArray());
+                        result.AppendLine($"LOWER({property.PropertyName}) {operatorStr} (:{randomString})");
+                    }
+                    else
+                    {
+                        result.Remove(result.Length - 5, 5);//REMOVE LAST " AND " for this property
+                        continue;
+                    }
                 }
 
                 //for most of the data
@@ -194,7 +211,7 @@ namespace Template.Repositories.Helpers
                 else if (property.Operator == ExpressionParsingOperator.CandidatesContain && property.CandidateNames != null && property.CandidateNames.Count > 0)
                 {
                     var randomString = StringHelper.RandomString(32);
-                    result.AppendLine("(" + string.Join(" or ", property.CandidateNames.Select(x => $"(LOWER({x}) {operatorStr} LOWER('%'||:{randomString}||'%'))")) + ")");
+                    result.AppendLine("(" + string.Join(" OR ", property.CandidateNames.Select(x => $"(LOWER({x}) {operatorStr} LOWER('%'||:{randomString}||'%'))")) + ")");
                     sqlParameters.Add(randomString, property.PropertyValue);
                 }
 
@@ -213,7 +230,7 @@ namespace Template.Repositories.Helpers
                 }
 
                 if (i + 1 != objectProperties.Count)
-                    result.Append(" and ");
+                    result.Append(" AND ");
             }
             return result.ToString();
         }
@@ -283,7 +300,7 @@ namespace Template.Repositories.Helpers
             }
             return result;
         }
-        
+
         private static void ValidateAndNormalizeParams<TDatabaseModel>(HashSet<SqlWhereParameter> parameters, SqlGeneratorImpl sqlGenerator)
             where TDatabaseModel : BaseEntity
         {
@@ -301,7 +318,7 @@ namespace Template.Repositories.Helpers
                     {
                         if (param.CandidateNames.Any(x => !String.Equals(x, validationProperty.Name, StringComparison.OrdinalIgnoreCase)))
                             continue;
-                        param.CandidateNames = param.CandidateNames.Select(x =>$"{tableName}.{sqlGenerator.GetColumnName(new AutoClassMapper<TDatabaseModel>(), x, false)}").ToList();
+                        param.CandidateNames = param.CandidateNames.Select(x => $"{tableName}.{sqlGenerator.GetColumnName(new AutoClassMapper<TDatabaseModel>(), x, false)}").ToList();
                     }
                     param.PropertyName = $"{tableName}.{sqlGenerator.GetColumnName(new AutoClassMapper<TDatabaseModel>(), param.PropertyName, false)}";
                     param.IsNormalized = true;

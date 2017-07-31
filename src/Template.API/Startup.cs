@@ -50,6 +50,7 @@ namespace Template.API
 
             // Repositories
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             //Services
             services.AddScoped<IUserService, UserService>();

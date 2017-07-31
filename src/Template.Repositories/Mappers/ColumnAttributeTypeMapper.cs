@@ -1,7 +1,10 @@
-using System;
-using System.Linq;
-using System.Reflection;
 using Dapper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Template.Common.Helpers;
 
 namespace Template.Repositories.Mappers
 {
@@ -9,7 +12,7 @@ namespace Template.Repositories.Mappers
     {
         public ColumnAttributeTypeMapper(Type t) : base(new SqlMapper.ITypeMap[]
             {
-                new CustomPropertyTypeMap(t, (type, columnName) => type.GetProperties().FirstOrDefault(prop => prop.Name == columnName)),
+                new CustomPropertyTypeMap(t, (type, columnName) => type.GetProperties().FirstOrDefault(prop => StringHelper.ToUnderscoreCase(prop.Name) == columnName)),
                 new DefaultTypeMap(t)
             })
         { }
@@ -24,10 +27,11 @@ namespace Template.Repositories.Mappers
                    typeof(T),
                    (type, columnName) =>
                        type.GetProperties().FirstOrDefault(prop =>
-                       prop.Name  == columnName)
+                       StringHelper.ToUnderscoreCase(prop.Name) == columnName)
                    ),
                 new DefaultTypeMap(typeof(T))
             })
-        { }
+        {
+        }
     }
 }
