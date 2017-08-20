@@ -1,46 +1,53 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptionsArgs } from '@angular/http';
 import { Observable } from "rxjs/Observable";
+import { IAPIError } from "../../models/index";
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
 @Injectable()
-export class ApiProvider {
-    private _host: string;
+export class DataHelper {
 
-    @Output() errorHandled$ = new EventEmitter();
-
-    constructor(private _http: Http) {
-        this._host = "http://localhost:5000";
+    constructor(private _http: Http, private toastr: ToastsManager) {
     }
 
-    private errorHandler(response: Response): any {
-        if (response.status == 0) {
-            this.errorHandled$.emit({
-                value: "ERR_CONNECTION_REFUSED"
-            });
-        }
-        return null;
-    }
-
-    get(path: string): Promise<any> {
-        var headers = new Headers();
-
-        return this._http.get(this._host + path, { headers: headers })
-            .toPromise()
-            .then(response => {
-                return response.json();
+    post(url: string, body: string, options?: RequestOptionsArgs, showMessage?: boolean, messageTitle?: string, messageText?: string): any {
+        return this._http.post(url, body, options)
+            .map(result => {
+                if (showMessage) {
+                    this.toastr.success(messageText, messageTitle);
+                }                
+                return result.json()
             })
-            .catch((response: Response) => this.errorHandler(response));
     }
 
-    post(path: string, body: string): Promise<any> {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-        return this._http.post(this._host + path, body, { headers: headers })
-            .toPromise()
-            .then((response: Response) => {
-                return response.json();
+    get(url: string, options?: RequestOptionsArgs, showMessage?: boolean, messageTitle?: string, messageText?: string): any {
+        return this._http.get(url, options)
+            .map(result => {
+                if (showMessage) {
+                    this.toastr.success(messageText, messageTitle);
+                }
+                return result.json()
             })
-            .catch((response: Response) => this.errorHandler(response));
     }
+
+    put(url: string, body: string, options?: RequestOptionsArgs, showMessage?: boolean, messageTitle?: string, messageText?: string): any {
+        return this._http.put(url, body, options)
+            .map(result => {
+                if (showMessage) {
+                    this.toastr.success(messageText, messageTitle);
+                }
+                return result.json()
+            })
+    }
+
+    delete(url: string, options?: RequestOptionsArgs, showMessage?: boolean, messageTitle?: string, messageText?: string): any {
+        return this._http.delete(url, options)
+            .map(result => {
+                if (showMessage) {
+                    this.toastr.success(messageText, messageTitle);
+                }
+                return result.json()
+            })
+    }
+
 }

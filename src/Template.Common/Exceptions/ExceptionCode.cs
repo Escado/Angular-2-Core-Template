@@ -26,7 +26,10 @@ namespace Template.Common.Exceptions
             DuplicateUser = 20001,
 
             [Description("Cannot create user with empty name or surname")]
-            EmptyNameOrSurname = 20002
+            EmptyNameOrSurname = 20002,
+
+            [Description("Password and username fields cannot be empty")]
+            EmptyUsernameOrPassword = 20003,
         }
     }
 }

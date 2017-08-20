@@ -8,9 +8,12 @@
     <PackageReference Include="Npgsql" Version="3.2.4.1" />
     <PackageReference Include="FluentMigrator" Version="1.6.2" />
     <PackageReference Include="FluentMigrator.Runner" Version="1.6.2" />
+    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\ViewModels\" />
     <Folder Include="WebParams\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
 </Project>

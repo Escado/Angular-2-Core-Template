@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Template.Entities.DbModels;
 using Template.Repositories.Repositories;
+using static Template.Entities.EnumStrings.ViewClaimTypes;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Template.API.Controllers
 {
@@ -31,6 +33,7 @@ namespace Template.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(ViewUsers)]
         public IActionResult Get()
         {
             return Ok(new List<User>()

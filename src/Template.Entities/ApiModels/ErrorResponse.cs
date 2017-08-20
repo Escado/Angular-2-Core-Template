@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Template.Entities.ApiModels
 {
-    public class ApiErrorResponse
+    public class ErrorResponse
     {
         public int code { get; set; }
         public string error { get; set; }

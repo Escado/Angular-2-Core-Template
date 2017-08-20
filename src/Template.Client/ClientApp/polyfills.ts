@@ -18,5 +18,5 @@ import 'core-js/es6/weak-set';
 import 'core-js/es6/typed';
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
-
+import 'ng2-toastr/bundles/ng2-toastr.min.css'
 import 'ts-helpers';

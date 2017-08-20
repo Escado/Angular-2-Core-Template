@@ -71,15 +71,15 @@ module.exports = {
             ]
         ),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            output: {
-                comments: false
-            },
-            sourceMap: true
-        }),
+        //new webpack.optimize.UglifyJsPlugin({
+        //    compress: {
+        //        warnings: false
+        //    },
+        //    output: {
+        //        comments: false
+        //    },
+        //    sourceMap: true
+        //}),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),
@@ -95,5 +95,5 @@ module.exports = {
         ])
     ],
     devtool: "source-map",
-    //watch: true
+    watch: true
 };

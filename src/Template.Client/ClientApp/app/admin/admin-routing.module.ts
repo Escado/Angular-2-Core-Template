@@ -4,7 +4,7 @@ import { AdminInternalComponent } from './internal/admin.internal.component';
 
 export const routes: Routes = [
     { path: 'internal', component: AdminInternalComponent, loadChildren: './internal/admin.internal.module#AdminInternalModule' },
-    { path: 'public', loadChildren: './public/admin.public.module#AdminPublicModule' },
+    { path: '', loadChildren: './public/admin.public.module#AdminPublicModule' },
 ];
 
 @NgModule({

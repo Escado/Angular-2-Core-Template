@@ -15,11 +15,15 @@ using Template.Repositories.Repositories;
 using Template.Repositories.Base;
 using Template.Services.Services;
 using Template.API.Middlewares;
+using Microsoft.IdentityModel.Tokens;
+using Template.Entities.EnumStrings;
 
 namespace Template.API
 {
     public class Startup
     {
+        private static IConfigurationRoot _config;
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -28,6 +32,7 @@ namespace Template.API
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+            _config = Configuration;
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             var migrationNamespace = Configuration["ConfigSettings:MigrationNamespace"];
             BaseRepository.ConnectionString = connectionString;
@@ -44,6 +49,17 @@ namespace Template.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthorization(opts =>
+            {
+                opts.AddPolicy(ViewClaimTypes.ViewOrders, policy => policy.RequireClaim(ViewClaimTypes.ViewOrders, "true"));
+                opts.AddPolicy(ViewClaimTypes.ViewProducts, policy => policy.RequireClaim(ViewClaimTypes.ViewProducts, "true"));
+                opts.AddPolicy(ViewClaimTypes.ViewUsers, policy => policy.RequireClaim(ViewClaimTypes.ViewUsers, "true"));
+
+                opts.AddPolicy(EditClaimTypes.EditOrders, policy => policy.RequireClaim(EditClaimTypes.EditOrders, "true"));
+                opts.AddPolicy(EditClaimTypes.EditProducts, policy => policy.RequireClaim(EditClaimTypes.EditProducts, "true"));
+                opts.AddPolicy(EditClaimTypes.EditUsers, policy => policy.RequireClaim(EditClaimTypes.EditUsers, "true"));
+            });
+
             // Configurations
             services.AddScoped<NpgsqlConnection>(provider => new NpgsqlConnection(Configuration.GetConnectionString("DefaultConnection")));
             services.Configure<ConfigSettings>(Configuration.GetSection("ConfigSettings"));
@@ -51,10 +67,16 @@ namespace Template.API
             // Repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IIdentityClaimRepository, IdentityClaimRepository>();
+            services.AddScoped<IUserClaimRepository, UserClaimRepository>();
 
             //Services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
+            //External services
+            services.AddScoped<IPasswordHashService, PasswordHashService>();
 
             // Add framework services.
             services.AddMvc();
@@ -68,6 +90,21 @@ namespace Template.API
             app.UseCors(builder =>
                 builder.WithOrigins("http://localhost:52672").AllowAnyHeader().AllowAnyMethod());
 #endif
+
+
+            app.UseJwtBearerAuthentication(new JwtBearerOptions()
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidIssuer = Configuration["ConfigSettings:TokenIssuer"],
+                    ValidAudience = Configuration["ConfigSettings:TokenAudience"],
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(Configuration["ConfigSettings:TokenSecret"])),
+                    ValidateLifetime = true
+                }
+            });
             app.UseMvc();
 
         }

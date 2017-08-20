@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Template.API.Controllers.Base;
 using Template.Entities.DbModels;
 using Template.Entities.Enums;
 using Template.Repositories.Repositories;
+using static Template.Entities.EnumStrings.EditClaimTypes;
+using static Template.Entities.EnumStrings.ViewClaimTypes;
 
 namespace Template.API.Controllers
 {
@@ -22,10 +26,21 @@ namespace Template.API.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet]
+        [HttpGet("lol")]
         public IActionResult Get()
         {
-            return Ok(_orderRepository.Get());
+             var hmac = new HMACSHA256();
+                 var key = Convert.ToBase64String(hmac.Key);
+            return Ok(key);
+        }
+
+        [Authorize]
+        [HttpGet("lolrestricted")]
+        public IActionResult GetRestricted()
+        {
+            var hmac = new HMACSHA256();
+            var key = Convert.ToBase64String(hmac.Key);
+            return Ok(key);
         }
     }
 }

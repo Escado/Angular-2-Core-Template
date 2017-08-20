@@ -8,6 +8,7 @@ import { UserComponent, UserService, UsersResolver } from './users/index'
 
 import { ProductComponent, ProductService, ProductsResolver } from "./products/index";
 
+import { DashboardComponent, DashboardService, DashboardResolver } from "./dashboard/index";
 
 @NgModule({
     imports: [
@@ -16,13 +17,17 @@ import { ProductComponent, ProductService, ProductsResolver } from "./products/i
     ],
     declarations: [
         UserComponent,
-        ProductComponent
+        ProductComponent,
+        DashboardComponent
     ],
     providers: [
         UserService,
-        UsersResolver,
         ProductService,
-        ProductsResolver
+        DashboardService,
+
+        UsersResolver,
+        ProductsResolver,
+        DashboardResolver,
     ]
 })
 export class AdminInternalModule {

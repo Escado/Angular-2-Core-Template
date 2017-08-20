@@ -38,7 +38,7 @@ namespace Template.API.Middlewares
             catch (TemplateException ex)
             {
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                SetResponseBody(context, new ApiErrorResponse()
+                SetResponseBody(context, new ErrorResponse()
                 {
                     code = Convert.ToInt32(ex.Code),
                     field = ex.Field,
@@ -50,7 +50,7 @@ namespace Template.API.Middlewares
                 if (ex.GetType() == typeof(SecurityTokenExpiredException) || ex.GetType() == typeof(SecurityTokenException))
                 {
                     context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                    SetResponseBody(context, new ApiErrorResponse()
+                    SetResponseBody(context, new ErrorResponse()
                     {
                         code = 401,
                         error = "Unauthorized"
@@ -67,7 +67,7 @@ namespace Template.API.Middlewares
                     //    Message = "Unhandled exception occured: \r\n" + ex
                     //});
                     context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                    var response = new ApiErrorResponse()
+                    var response = new ErrorResponse()
                     {
                         code = (int)ExceptionCode.General.UnknownError,
                         error = ExceptionCode.General.UnknownError.GetDescription(),
@@ -82,7 +82,7 @@ namespace Template.API.Middlewares
             }
         }
 
-        public void SetResponseBody(HttpContext context, ApiErrorResponse response)
+        public void SetResponseBody(HttpContext context, ErrorResponse response)
         {
             var json = JsonConvert.SerializeObject(response);
             using (var streamWriter = new StreamWriter(context.Response.Body))

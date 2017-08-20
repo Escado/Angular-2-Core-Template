@@ -4,5 +4,4 @@ import { Component } from '@angular/core'
     templateUrl: 'admin.internal.component.html'
 })
 export class AdminInternalComponent {
-    
 }
