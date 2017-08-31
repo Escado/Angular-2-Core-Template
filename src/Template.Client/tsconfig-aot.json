@@ -1,36 +1,36 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "es2015",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "removeComments": true,
-        "noImplicitAny": false,
-        "suppressImplicitAnyIndexErrors": true,
-        "skipLibCheck": true,
-        "lib": [
-            "es2015",
-            "dom"
-        ]
-    },
-    "files": [
-        "ClientApp/app/admin/admin.module.ts",
-        "ClientApp/app/admin/internal/admin.internal.module.ts",
-        "ClientApp/app/admin/public/admin.public.module.ts",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "files": [
+    "ClientApp/app/admin/admin.module.ts",
+    "ClientApp/app/admin/internal/admin.internal.module.ts",
+    "ClientApp/app/admin/public/admin.public.module.ts",
 
-        "ClientApp/app/client/client.module.ts",
-        "ClientApp/app/client/internal/client.internal.module.ts",
-        "ClientApp/app/client/public/client.public.module.ts",
+    "ClientApp/app/client/client.module.ts",
+    "ClientApp/app/client/internal/client.internal.module.ts",
+    "ClientApp/app/client/public/client.public.module.ts",
 
-        "ClientApp/app/application.module.ts",
-        "ClientApp/main-aot.ts"
-    ],
-    "angularCompilerOptions": {
-        "genDir": "aot",
-        "skipMetadataEmit": true
-    },
-    "compileOnSave": true,
-    "buildOnSave": true
+    "ClientApp/app/application.module.ts",
+    "ClientApp/main-aot.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "skipMetadataEmit": true
+  },
+  "compileOnSave": true,
+  "buildOnSave": true
 }
