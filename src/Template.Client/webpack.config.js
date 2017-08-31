@@ -71,15 +71,15 @@ module.exports = {
             ]
         ),
         new webpack.NoEmitOnErrorsPlugin(),
-        //new webpack.optimize.UglifyJsPlugin({
-        //    compress: {
-        //        warnings: false
-        //    },
-        //    output: {
-        //        comments: false
-        //    },
-        //    sourceMap: true
-        //}),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),
@@ -94,6 +94,6 @@ module.exports = {
             { from: 'ClientApp/img/*.*', to: 'assets/', flatten: true }
         ])
     ],
-    devtool: "source-map",
-    watch: true
+    //devtool: "source-map",
+    //watch: true
 };

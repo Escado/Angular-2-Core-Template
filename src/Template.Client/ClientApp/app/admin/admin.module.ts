@@ -8,15 +8,13 @@ import { AdminInternalModule } from './internal/admin.internal.module'
 import { NavBarComponent } from './internal/navbar/navbar.component'
 
 import { AdminPublicModule } from './public/admin.public.module'
-import { PermissionsDirective } from "../shared/directives/index";
 
 
 @NgModule({
     imports: [
         AdminRoutingModule,
         AdminPublicModule,
-        AdminInternalModule,
-        PermissionsDirective
+        AdminInternalModule
     ],
     declarations: [
         NavBarComponent,

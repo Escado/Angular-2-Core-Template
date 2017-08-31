@@ -1,5 +1,6 @@
 {
     "scripts": {
-        "install": "cd src\\Template.Client && npm install"
+        "install": "cd src\\Template.Client && npm install",
+        "build": "cd src\\Template.Client && ngc -p tsconfig-aot.json && webpack"
     }
 }
